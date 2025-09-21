@@ -33,7 +33,7 @@ const LOCATIONS_DATABASE = [
     "Villa del Prado, Tunja, Boyacá",
     "El Bosque, Tunja, Boyacá",
     "La Candelaria, Tunja, Boyacá",
-    "El Centro, Tunja, Boyacá",
+    "El Centro, Tunja, Boyacá"
 ];
 
 // Mapa de emergencias
@@ -67,35 +67,48 @@ if (emergencyType && emergencyNames[emergencyType]) {
     }
 }
 
-// Función continuar adaptada
+// Función continuar 
 function continuar() {
     const nombre = document.getElementById('nombre').value;
-    
+
     if (nombre.trim() === "") {
         alert("Por favor ingrese su nombre.");
         return;
     }
-    
+
     // Generar ubicación aleatoria automáticamente
     const ubicacionAleatoria = generateRandomLocation();
-    
+
     // Crear los parámetros para el chat
     const chatParams = new URLSearchParams({
         emergency: emergencyType,
         name: nombre.trim(),
         location: ubicacionAleatoria
     });
-    
+
     // Opcional: mostrar mensaje de bienvenida con ubicación
     alert(`Bienvenido ${nombre}! Conectando desde ${ubicacionAleatoria}`);
-    
+
     // Redirigir directamente al chat con todos los parámetros
     window.location.href = `chat.html?${chatParams.toString()}`;
 }
 
 // Permitir envío con Enter
-document.getElementById('nombre').addEventListener('keypress', function(e) {
+document.getElementById('nombre').addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
         continuar();
     }
+
+    // Guardar datos en localStorage
+    const chatData = {
+        emergency: emergencyType,
+        name: nombre.trim(),
+        location: ubicacionAleatoria
+    };
+
+    localStorage.setItem('emergencyData', JSON.stringify(chatData));
+
+    // Redirigir sin parámetros
+    window.location.href = 'chat.html';
+
 });
