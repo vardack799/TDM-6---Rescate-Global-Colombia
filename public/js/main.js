@@ -1,21 +1,14 @@
-function toggleSidebar() {
-    const sidebar = document.querySelector('.sidebar');
-    const overlay = document.querySelector('.overlay');
-
-    sidebar.classList.toggle('active');
-    overlay.classList.toggle('active');
-}
-
 function selectEmergency(type) {
     const emergencyNames = {
-        'flood': 'Inundación',
+        'flood': 'Inundacion',
         'earthquake': 'Terremoto',
         'fire': 'Incendio',
         'other': 'Otra emergencia'
     };
 
     alert(`Has seleccionado: ${emergencyNames[type]}`);
-    // Aquí puedes agregar la lógica para manejar la selección de emergencia
+   // Redirige a nombre.html con el nombre de la emergencia como parámetro
+    window.location.href = `name.html?emergency=${type}`;
 }
 
 // Close sidebar when clicking on a sidebar item

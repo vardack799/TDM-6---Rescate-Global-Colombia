@@ -17,7 +17,10 @@ const server = http.createServer((req, res) => {
     if (handleAuthRoutes(req, res)) return;
 
     // Archivos estáticos
-    let filePath = req.url === "/" ? "main.html" : req.url;
+    //url parseada quitando parametros de query
+    const parsedUrl = new URL(req.url, `http://${req.headers.host}`);
+    let filePath = parsedUrl.pathname === "/" ? "main.html" : parsedUrl.pathname;
+   
     const extname = path.extname(filePath);
     const mimeTypes = {
         ".html": "text/html",

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rescate Global Colombia - Nombre</title>
+    <link rel="stylesheet" href="./css/name.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <script src="./js/header.js" defer></script>
+</head>
+
+<body>
+    <!-- Header global -->
+    <div id="global-header"></div>
+    <script>
+        fetch('header.html')
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById('global-header').innerHTML = html;
+            });
+    </script>
+
+    <div class="container">
+        <!-- <h1 id="emergencyTitle"></h1> -->
+        <h2>A continuación digite su nombre</h2>
+        <div class="input-box">
+            <input type="text" id="nombre" placeholder="Ingrese su nombre...">
+        </div>
+        <button class="btn" onclick="continuar()">Continuar</button>
+    </div>
+
+    <footer>
+        <button>⬅</button>
+        <button>🏠</button>
+        <button>⚠</button>
+    </footer>
+
+    <script src="js/name.js"></script>
+
+</body>
+
+</html>

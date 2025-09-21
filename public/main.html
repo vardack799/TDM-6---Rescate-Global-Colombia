@@ -6,26 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rescate Global Colombia - Emergencias</title>
     <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <script src="./js/header.js" defer></script>
+
+
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="header">
-        <h1>Rescate Global Colombia</h1>
-        <button class="menu-btn" onclick="toggleSidebar()"></button>
-    </header>
-
-    <!-- Overlay -->
-    <div class="overlay" onclick="toggleSidebar()"></div>
-
-    <!-- Sidebar -->
-    <nav class="sidebar">
-        <a href="#" class="sidebar-item">Inicio</a>
-        <a href="#" class="sidebar-item">Emergencias</a>
-        <a href="#" class="sidebar-item">Recursos</a>
-        <a href="#" class="sidebar-item">Contacto</a>
-        <a href="#" class="sidebar-item">Sobre Nosotros</a>
-    </nav>
+    <!-- header global -->
+    <div id="global-header">
+        <script>
+            fetch('./header.html')
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById('global-header').innerHTML = html;
+                });
+        </script>
+    </div>
 
     <!-- Main Container -->
     <div class="container">
