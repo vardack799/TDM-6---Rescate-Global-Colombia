@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rescate Global Colombia - Emergencias</title>
+    <link rel="stylesheet" href="./css/main.css" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1>Rescate Global Colombia</h1>
+        <button class="menu-btn" onclick="toggleSidebar()"></button>
+    </header>
+
+    <!-- Overlay -->
+    <div class="overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <a href="#" class="sidebar-item">Inicio</a>
+        <a href="#" class="sidebar-item">Emergencias</a>
+        <a href="#" class="sidebar-item">Recursos</a>
+        <a href="#" class="sidebar-item">Contacto</a>
+        <a href="#" class="sidebar-item">Sobre Nosotros</a>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <h2 class="main-title">¿Qué emergencia está ocurriendo?</h2>
+
+        <!-- Emergency Grid -->
+        <div class="emergency-grid">
+            <div class="emergency-card flood" onclick="selectEmergency('flood')">
+                <span class="emergency-icon">💧</span>
+                <h3 class="emergency-title">Inundación</h3>
+            </div>
+
+            <div class="emergency-card earthquake" onclick="selectEmergency('earthquake')">
+                <span class="emergency-icon">⚡</span>
+                <h3 class="emergency-title">Terremoto</h3>
+            </div>
+
+            <div class="emergency-card fire" onclick="selectEmergency('fire')">
+                <span class="emergency-icon">🔥</span>
+                <h3 class="emergency-title">Incendio</h3>
+            </div>
+
+            <div class="emergency-card other" onclick="selectEmergency('other')">
+                <span class="emergency-icon">⚠️</span>
+                <h3 class="emergency-title">Otra</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Current Emergencies Panel -->
+    <div class="current-emergencies">
+        <h3>Emergencias actuales</h3>
+        <div class="emergency-alert">
+            <span class="location">Incendio en Los Muiscas Tunja</span>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

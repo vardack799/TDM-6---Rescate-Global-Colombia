@@ -17,7 +17,7 @@ const server = http.createServer((req, res) => {
     if (handleAuthRoutes(req, res)) return;
 
     // Archivos estáticos
-    let filePath = req.url === "/" ? "login.html" : req.url;
+    let filePath = req.url === "/" ? "main.html" : req.url;
     const extname = path.extname(filePath);
     const mimeTypes = {
         ".html": "text/html",
