@@ -1,32 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatApp</title>
-    <link rel="stylesheet" href="./css/global.css"/>
-    <link rel="stylesheet" href="./css/login.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro</title>
+  <link rel="stylesheet" href="./css/login.css" />
 </head>
 <body>
-    <div class="login-container">
-        <h1>ChatApp</h1>
-            <form id="loginForm" class="login-form">
-            <input type="text" id="username" placeholder="Usuario" required />
-            <input type="password" id="password" placeholder="Contraseña" required />
-            <button type="submit" class="btn-primary">Ingresar</button>
-        </form>
+  <div class="login-container">
+    <h1>Registro</h1>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Usuario" required />
+      <input type="password" id="password" placeholder="Contraseña" required />
 
-        <div class="divider">
-            <span>o</span>
-        </div>
+      <h3>Selecciona una categoría</h3>
+      <div class="category-buttons">
+        <button type="button" class="category-btn" data-cat="inundacion">🌊 Inundación</button>
+        <button type="button" class="category-btn" data-cat="terremoto">🌎 Terremoto</button>
+        <button type="button" class="category-btn" data-cat="incendio">🔥 Incendio</button>
+        <button type="button" class="category-btn" data-cat="otro">❓ Otro</button>
+      </div>
+      <input type="hidden" id="category" name="category" />
 
-        <button class="btn-google">
-            <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google logo"/>
-            Ingresar con Google
-        </button>
-
-        <p id="loginError" class="error"></p>
-    </div>
-    <script type="module" src="js/login.js"></script>
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+  <script src="./js/login.js"></script>
 </body>
 </html>

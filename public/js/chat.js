@@ -1,42 +1,48 @@
-import { connect, sendMessage } from "./web/chatSocket.js";
-import { showUserList, clearUser, redirectToLogin } from "./ui/chatUI.js";
-
-// Verificar usuario
 const user = JSON.parse(localStorage.getItem("user"));
-if (!user) redirectToLogin();
+if (!user) {
+  window.location.href = "login.html"; // si no hay sesión, vuelve al login
+}
 
-document.getElementById("chat-username").textContent = "Bienvenido " + user.name;
+const ws = new WebSocket("ws://localhost:3000");
 
-// Sidebar y controles
-const chatForm = document.getElementById("chatForm");
-const messageInput = document.getElementById("messageInput");
-const logoutBtn = document.getElementById("logoutBtn");
-const sidebar = document.getElementById("userSidebar");
-const toggleBtn = document.getElementById("usersToggle");
-const closeBtn = document.getElementById("closeSidebar");
+ws.onopen = () => {
+  console.log("✅ Conectado al servidor WebSocket");
+  ws.send(JSON.stringify({ type: "login", user }));
+};
 
-// Conectar al WebSocket
-connect(user);
+ws.onmessage = (event) => {
+  const data = JSON.parse(event.data);
+  console.log("📩 Mensaje recibido:", data);
 
-// Eventos
-chatForm.addEventListener("submit", function(e) {
-    e.preventDefault();
-    const text = messageInput.value.trim();
-    if (text) {
-        sendMessage(user.name, text);
-        messageInput.value = "";
+  if (data.type === "chat") {
+    const div = document.createElement("div");
+    div.classList.add("message");
+    if (data.user.username === user.username) {
+      div.classList.add("self");
+    } else {
+      div.classList.add("other");
     }
+    div.textContent = `${data.user.username}: ${data.message}`;
+    document.getElementById("messages").appendChild(div);
+    document.getElementById("messages").scrollTop =
+      document.getElementById("messages").scrollHeight;
+  }
+};
+
+document.getElementById("sendBtn").addEventListener("click", sendMessage);
+document.getElementById("messageInput").addEventListener("keypress", (e) => {
+  if (e.key === "Enter") sendMessage();
 });
 
-logoutBtn.addEventListener("click", function() {
-    clearUser();
-    redirectToLogin();
-});
-
-toggleBtn.addEventListener("click", () => {
-    showUserList(sidebar, true);
-});
-
-closeBtn.addEventListener("click", () => {
-    showUserList(sidebar, false);
-});
+function sendMessage() {
+  const input = document.getElementById("messageInput");
+  if (input.value.trim() !== "") {
+    const msg = {
+      type: "chat",
+      user,
+      message: input.value
+    };
+    ws.send(JSON.stringify(msg));
+    input.value = "";
+  }
+}

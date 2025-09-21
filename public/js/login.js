@@ -1,33 +1,49 @@
-import { login } from "./services/api.js";
-import { showError, clearError, saveUser, redirectToChat } from "./ui/loginUI.js";
+let selectedCategory = null;
 
-// Botón
-const loginForm = document.getElementById("loginForm");
+// Escuchar clic en cada botón de categoría
+document.querySelectorAll(".category-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    selectedCategory = btn.dataset.cat;
+    document.getElementById("category").value = selectedCategory;
 
-// Eventos
-loginForm.addEventListener("submit", async function(e) {
-    e.preventDefault();
+    // Visual feedback
+    document.querySelectorAll(".category-btn").forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
 
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
+    console.log("Categoría seleccionada:", selectedCategory);
+  });
+});
 
-    clearError();
+// Manejo del formulario de login
+document.getElementById("loginForm").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-    try {
-        // Failsafe porque esto no puede suceder
-        if (!username || !password) {
-            showError("Debes ingresar usuario y contraseña");
-            return;
-        }
+  if (!selectedCategory) {
+    alert("Debes seleccionar una categoría antes de continuar");
+    return;
+  }
 
-        // Llamar backend
-        const data = await login(username, password);
+  navigator.geolocation.getCurrentPosition((pos) => {
+    const userData = {
+      username: document.getElementById("username").value,
+      password: document.getElementById("password").value,
+      category: selectedCategory,
+      location: {
+        lat: pos.coords.latitude,
+        lng: pos.coords.longitude
+      }
+    };
 
-        // Guardar y redirigir
-        saveUser(data.user);
-        redirectToChat();
-    } catch (err) {
-        console.error("Error de login:", err);
-        showError(err.message || "Credenciales inválidas");
-    }
+    fetch("/api/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData)
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        localStorage.setItem("user", JSON.stringify(data));
+        window.location.href = "chat.html";
+      })
+      .catch((err) => console.error("Error en registro:", err));
+  });
 });
