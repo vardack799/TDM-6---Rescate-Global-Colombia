@@ -4,7 +4,7 @@ const { getUsers } = require("../models/users");
 let users = [];
 
 function setupChat(wss) {
-    wss.on("connection", (ws, req) => {
+    wss.on("connection", (ws, req) => { 
         let currentUser = null;
         const ip = req.headers['x-forwarded-for']?.split(',')[0].trim() || req.socket.remoteAddress;
 
@@ -31,6 +31,15 @@ function setupChat(wss) {
                     }))
                 });
             }
+
+            // if (data.type === "formUser"){
+            //     currentUser = {name: data.user.name, ws}
+            //     users.push(currentUser)
+            //     console.log(`${new Date().toISOString()} - 🟢 Cliente conectado (${currentUser.name} | ${ip})`);
+            //     broadcast(users, { type: "system", text: `${currentUser.name} se unió` });
+            // }
+
+
 
             if (data.type === "chat") {
                 broadcast(users, { type: "chat", user: data.user, text: data.text });

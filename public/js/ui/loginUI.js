@@ -5,11 +5,11 @@ export function showError(message) {
 
 export function clearError() {
     const errorEl = document.getElementById("loginError");
-    errorEl.textContent = "";
+    errorEl.textContent = ""; 
 }
 
-export function saveUser(user) {
-    localStorage.setItem("user", JSON.stringify(user));
+export function saveUserV(userV) {
+    localStorage.setItem("userV", JSON.stringify(userV));
 }
 
 export function redirectToChat() {

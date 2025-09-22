@@ -80,35 +80,54 @@ function continuar() {
     const ubicacionAleatoria = generateRandomLocation();
 
     // Crear los parámetros para el chat
-    const chatParams = new URLSearchParams({
+    const formData = {
         emergency: emergencyType,
         name: nombre.trim(),
         location: ubicacionAleatoria
-    });
+    }
+
+    const chatParams = new URLSearchParams(formData)
+
 
     // Opcional: mostrar mensaje de bienvenida con ubicación
     alert(`Bienvenido ${nombre}! Conectando desde ${ubicacionAleatoria}`);
+
+    //Se guarda la data en localStorage
+    localStorage.setItem('emergencyData', JSON.stringify(formData));
 
     // Redirigir directamente al chat con todos los parámetros
     window.location.href = `chat.html?${chatParams.toString()}`;
 }
 
-// Permitir envío con Enter
-document.getElementById('nombre').addEventListener('keypress', function (e) {
+//envio de formulario 
+document.getElementById("userForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
     if (e.key === 'Enter') {
         continuar();
     }
 
-    // Guardar datos en localStorage
-    const chatData = {
-        emergency: emergencyType,
-        name: nombre.trim(),
-        location: ubicacionAleatoria
-    };
-
-    localStorage.setItem('emergencyData', JSON.stringify(chatData));
-
-    // Redirigir sin parámetros
-    window.location.href = 'chat.html';
+    continuar()
 
 });
+
+// document.getElementById("btnContinue").addEventListener("click", ()=>{
+//     continuar()
+// })
+
+// Permitir envío con Enter
+// document.getElementById('nombre').addEventListener('keypress', function (e) {
+//     if (e.key === 'Enter') {
+//         continuar();
+//     }
+
+//     // // Guardar datos en localStorage
+//     // const chatData = {
+//     //     emergency: emergencyType,
+//     //     name: nombre.trim(),
+//     //     location: ubicacionAleatoria
+//     // };
+
+//     // Redirigir sin parámetros
+//     // window.location.href = 'chat.html';
+
+// });

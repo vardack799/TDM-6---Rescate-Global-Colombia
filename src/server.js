@@ -24,7 +24,7 @@ const server = http.createServer((req, res) => {
     const extname = path.extname(filePath);
     const mimeTypes = {
         ".html": "text/html",
-        ".css": "text/css",
+        ".css": "text/css", 
         ".js": "text/javascript",
         ".json": "application/json",
         ".png": "image/png",

@@ -4,7 +4,7 @@ function broadcast(users, data) {
         if (u.ws.readyState === 1) {
             u.ws.send(msg);
         }
-    });
+    }); 
 }
 
 module.exports = broadcast;

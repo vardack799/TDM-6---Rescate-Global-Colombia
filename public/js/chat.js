@@ -1,16 +1,20 @@
 import { connect, sendMessage } from "./web/chatSocket.js";
 import { showUserList, clearUser, redirectToLogin } from "./ui/chatUI.js";
 
-// Verificar usuario
-const user = JSON.parse(localStorage.getItem("user"));
-if (!user) redirectToLogin();
+// // Verificar usuario
+const dataStorage = localStorage.getItem("emergencyData"); //Toma los datos del localStorage
+const user = JSON.parse(dataStorage)
+// // if (!user) redirectToLogin();
+
+// console.log(localStorage.getItem("emergencyData"))
+// console.log(user.name)
 
 document.getElementById("chat-username").textContent = "Bienvenido " + user.name;
 
 // Sidebar y controles
 const chatForm = document.getElementById("chatForm");
 const messageInput = document.getElementById("messageInput");
-const logoutBtn = document.getElementById("logoutBtn");
+const logoutBtn = document.getElementById("logoutBtn"); 
 const sidebar = document.getElementById("userSidebar");
 const toggleBtn = document.getElementById("usersToggle");
 const closeBtn = document.getElementById("closeSidebar");

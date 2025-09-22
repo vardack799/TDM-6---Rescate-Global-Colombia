@@ -1,5 +1,5 @@
 import { login } from "./services/api.js";
-import { showError, clearError, saveUser, redirectToChat } from "./ui/loginUI.js";
+import { showError, clearError, saveUserV, redirectToChat} from "./ui/loginUI.js";
 
 // Botón
 const loginForm = document.getElementById("loginForm");
@@ -24,7 +24,7 @@ loginForm.addEventListener("submit", async function(e) {
         const data = await login(username, password);
 
         // Guardar y redirigir
-        saveUser(data.user);
+        saveUserV(data.user);
         redirectToChat();
     } catch (err) {
         console.error("Error de login:", err);

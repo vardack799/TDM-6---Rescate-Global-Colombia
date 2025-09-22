@@ -1,6 +1,6 @@
 const messagesDiv = document.getElementById("messages");
 const userList = document.getElementById("userList");
-
+ 
 function fixChatHeight() {
     document.querySelector(".chat-container").style.height = window.innerHeight + "px";
 }

@@ -1,5 +1,3 @@
-
-
 function selectEmergency(type) {
     const emergencyNames = {
         'flood': 'Inundacion',
