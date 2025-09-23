@@ -5,6 +5,7 @@
         "password": "1234",
         "email": "admin@chat.com",
         "rol": "admin",
+        "location": "Tunja", 
         "img": "https://i.pravatar.cc/150?img=1"
     },
     {
@@ -13,6 +14,7 @@
         "password": "abcd",
         "email": "user@chat.com",
         "rol": "user",
+        "location": "Boig", 
         "img": "https://i.pravatar.cc/150?img=2"
     }
 ]

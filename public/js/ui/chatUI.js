@@ -5,13 +5,17 @@ function fixChatHeight() {
     document.querySelector(".chat-container").style.height = window.innerHeight + "px";
 }
 window.addEventListener("resize", fixChatHeight);
-fixChatHeight();
+fixChatHeight(); 
 
-export function addMessage(user, text, isSelf = false) {
+//Envío de msg
+export function addMessage(user, text, location, isSelf = false, typeEmergency) {
     const msgEl = document.createElement("div");
     msgEl.classList.add("message");
+    msgEl
     if (isSelf) msgEl.classList.add("self");
-    msgEl.innerHTML = `<strong>${user}: </strong>${text}`;
+
+    //Implementar filtro 
+    msgEl.innerHTML = `<strong>${user}, ${location}: </strong>${text}`;
     messagesDiv.appendChild(msgEl);
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }

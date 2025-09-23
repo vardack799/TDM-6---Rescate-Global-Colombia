@@ -7,7 +7,7 @@ const user = JSON.parse(dataStorage)
 // // if (!user) redirectToLogin();
 
 // console.log(localStorage.getItem("emergencyData"))
-// console.log(user.name)
+// console.log(user.name) 
 
 document.getElementById("chat-username").textContent = "Bienvenido " + user.name;
 
@@ -27,7 +27,7 @@ chatForm.addEventListener("submit", function(e) {
     e.preventDefault();
     const text = messageInput.value.trim();
     if (text) {
-        sendMessage(user.name, text);
+        sendMessage(user.name, user.location, text);
         messageInput.value = "";
     }
 });
