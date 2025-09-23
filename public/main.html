@@ -7,6 +7,8 @@
     <title>Rescate Global Colombia - Emergencias</title>
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
+
     <script src="./js/header.js" defer></script>
 
 
@@ -61,6 +63,18 @@
     </div>
 
     <script src="js/main.js"></script>
+
+    <div id="global-footer"></div>
+
+    <script>
+        fetch('./footer.html')
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById('global-footer').innerHTML = html;
+            });
+    </script>
+    <script src="js/footer.js"></script>
+
 </body>
 
 </html>

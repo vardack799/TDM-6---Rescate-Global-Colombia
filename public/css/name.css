@@ -30,16 +30,18 @@ h2 {
     text-align: center;
 
 }
-
-.input-box {
-    width: 100%;
-    margin: auto;
+#userForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
 }
 
 input {
+    height: fit-content;
     width: 100%;
     padding: 12px;
-    margin-top: 100px;
     border: none;
     border-radius: 25px;
     text-align: center;
@@ -60,31 +62,12 @@ input {
     cursor: pointer;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
     transition: background 0.3s;
-    margin-bottom: 70%;
     border-bottom: 6px solid rgba(255, 167, 116, 0.904);
-
+    margin-top: 24px;
+   
 }
 
 .btn:hover {
     background: #e65c00;
 }
 
-footer {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px 0;
-    border-top: 2px solid #ff6600;
-}
-
-footer button {
-    background: none;
-    border: none;
-    font-size: 22px;
-    cursor: pointer;
-    color: #333;
-}
-
-footer button:hover {
-    color: #ff6600;
-}

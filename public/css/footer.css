@@ -1,0 +1,26 @@
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    background: #fff;          
+    border-top: 2px solid #ff6600;
+    gap: 20px;
+}
+
+footer button {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #333;
+    margin: 0 40px;
+}
+
+footer button:hover {
+    color: #ff6600;
+}
