@@ -8,14 +8,14 @@ window.addEventListener("resize", fixChatHeight);
 fixChatHeight(); 
 
 //Envío de msg
-export function addMessage(user, text, location, isSelf = false, typeEmergency) {
+export function addMessage(user, text, location, typeEmergency, isSelf = false) {
     const msgEl = document.createElement("div");
     msgEl.classList.add("message");
     msgEl
     if (isSelf) msgEl.classList.add("self");
 
     //Implementar filtro 
-    msgEl.innerHTML = `<strong>${user}, ${location}: </strong>${text}`;
+    msgEl.innerHTML = `<strong>${user}, ${location}, ${typeEmergency}: </strong>${text}`;
     messagesDiv.appendChild(msgEl);
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }

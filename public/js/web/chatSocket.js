@@ -23,12 +23,11 @@ export function connect(user) {
 
     socket.addEventListener("message", (event) => {
         const data = JSON.parse(event.data);
-        console.log(data)
         
         switch (data.type) {
             case "chat":
                 //Muestra msg => modificar envío de datos y aplicar filtro.
-                addMessage(data.user, data.text, data.location, data.user === user.name);
+                addMessage(data.user, data.text, data.location, data.typeEmergency, data.user === user.name);
                 
                 break;
             case "system":
@@ -44,13 +43,14 @@ export function connect(user) {
 }
 
 //Envío de mensajes tipo chat
-export function sendMessage(userName, location, text) {
+export function sendMessage(userName, location, typeEmergency, text) {
     if (!socket || socket.readyState !== WebSocket.OPEN) return;
 
     socket.send(JSON.stringify({
         type: "chat",
         user: userName,
         location: location,
+        typeEmergency: typeEmergency,
         text
     }));
 }

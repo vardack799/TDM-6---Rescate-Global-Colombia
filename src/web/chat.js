@@ -12,25 +12,25 @@ function setupChat(wss) {
             const data = JSON.parse(msg);
 
             if (data.type === "login") {
-                currentUser = { id: data.user.id, name: data.user.name, location:data.user.location, ws};
+                currentUser = { id: data.user.id, name: data.user.name, location: data.user.location, typeEmergency: data.user.emergency, ws};
                 users.push(currentUser);
 
                 console.log(`${new Date().toISOString()} - 🟢 Cliente conectado (${currentUser.name} | ${ip} lugar: ${currentUser.location})`);
 
-                broadcast(users, { type: "system", text: `Se conecto: ${currentUser.name}` });
+                broadcast(users, { type: "system", typeEmergency: data.user.emergency, location:data.user.location, text: `¡Bienvenido ${currentUser.name}! :D` });
 
-                const allUsers = getUsers();
-                broadcast(users, {
-                    type: "users",
-                    users: allUsers.map(u => ({
-                        id: u.id,
-                        name: u.name,
-                        rol: u.rol,
-                        location: u.location,
-                        img: u.img,
-                        connected: users.some(c => c.id === u.id)
-                    }))
-                });
+                // const allUsers = getUsers();
+                // broadcast(users, {
+                //     type: "users",
+                //     users: allUsers.map(u => ({
+                //         id: u.id,
+                //         name: u.name,
+                //         rol: u.rol,
+                //         location: u.location,
+                //         img: u.img,
+                //         connected: users.some(c => c.id === u.id)
+                //     }))
+                // });
             }
 
             // if (data.type === "formUser"){
@@ -44,7 +44,7 @@ function setupChat(wss) {
 
             if (data.type === "chat") {
                 
-                broadcast(users, { type: "chat", user: data.user, location: data.location, text: data.text});
+                broadcast(users, { type: "chat", user: data.user, location: data.location, typeEmergency: data.typeEmergency, text: data.text});
             }
         });
 
@@ -55,17 +55,17 @@ function setupChat(wss) {
 
                 broadcast(users, { type: "system", text: `${currentUser.name} salió` });
 
-                const allUsers = getUsers();
-                broadcast(users, {
-                    type: "users",
-                    users: allUsers.map(u => ({
-                        id: u.id,
-                        name: u.name,
-                        rol: u.rol,
-                        img: u.img,
-                        connected: users.some(c => c.id === u.id)
-                    }))
-                });
+                // const allUsers = getUsers();
+                // broadcast(users, {
+                //     type: "users",
+                //     users: allUsers.map(u => ({
+                //         id: u.id,
+                //         name: u.name,
+                //         rol: u.rol,
+                //         img: u.img,
+                //         connected: users.some(c => c.id === u.id)
+                //     }))
+                // });
             }
         });
     });
