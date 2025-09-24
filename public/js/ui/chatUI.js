@@ -1,5 +1,9 @@
 const messagesDiv = document.getElementById("messages");
 const userList = document.getElementById("userList");
+
+//Hora
+const date = new Date()
+
  
 function fixChatHeight() {
     document.querySelector(".chat-container").style.height = window.innerHeight + "px";
@@ -13,11 +17,15 @@ export function addMessage(user, text, location, typeEmergency, isSelf = false) 
     msgEl.classList.add("message");
     msgEl
     if (isSelf) msgEl.classList.add("self");
-
-    //Implementar filtro 
-    msgEl.innerHTML = `<strong>${user}, ${location}, ${typeEmergency}: </strong>${text}`;
+    msgEl.innerHTML = `<strong>${user}: </strong><br>${text}
+    <br> <small>${date.toLocaleTimeString("es-ES", {hour: "2-digit", minute: "2-digit"})}</small>`;
     messagesDiv.appendChild(msgEl);
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+    console.log(date.toLocaleTimeString("es-ES", {
+        hour: "2-digit",
+        minute: "2-digit"
+    }))
 }
 
 export function addSystemMessage(text) {
