@@ -24,3 +24,8 @@ footer button {
 footer button:hover {
     color: #ff6600;
 }
+
+.menuFooter .advertencias {
+  color: #F24822;    
+  font-size: 24px;  
+}
