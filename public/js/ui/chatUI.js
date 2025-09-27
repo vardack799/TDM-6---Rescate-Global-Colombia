@@ -12,20 +12,15 @@ window.addEventListener("resize", fixChatHeight);
 fixChatHeight(); 
 
 //Envío de msg
-export function addMessage(user, text, location, typeEmergency, isSelf = false) {
+export function addMessage(user, text, time, isSelf = false) {
     const msgEl = document.createElement("div");
     msgEl.classList.add("message");
     msgEl
     if (isSelf) msgEl.classList.add("self");
     msgEl.innerHTML = `<strong>${user}: </strong><br>${text}
-    <br> <small>${date.toLocaleTimeString("es-ES", {hour: "2-digit", minute: "2-digit"})}</small>`;
+    <br> <small>${time}</small>`;
     messagesDiv.appendChild(msgEl);
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
-
-    console.log(date.toLocaleTimeString("es-ES", {
-        hour: "2-digit",
-        minute: "2-digit"
-    }))
 }
 
 export function addSystemMessage(text) {

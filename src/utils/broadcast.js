@@ -5,6 +5,6 @@ function broadcast(users, data) {
             u.ws.send(msg); 
         }
     }); 
-}
+} 
 
 module.exports = broadcast;

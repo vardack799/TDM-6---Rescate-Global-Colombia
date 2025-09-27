@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WarningsChannel</title>
+    <link rel="stylesheet" href="./css/warningsChannel.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
+</head>
+<body>
+    <header>
+    <!-- header global -->
+    <div id="global-header">
+        <script>
+            fetch('./header.html')
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById('global-header').innerHTML = html;
+                });
+        </script>
+    </div>
+    </header>
+
+    <h1>...</h1>
+    <div id="container-channels">
+
+    </div>
+
+    <!-- menú global -->
+</body>
+</html>

@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rescate Global Colombia - Emergencias</title>
+    <title>Home</title>
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/header.css" />
-    <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="./css/menu.css" />
 
     <script src="./js/header.js" defer></script>
 
@@ -64,16 +64,17 @@
 
     <script src="js/main.js"></script>
 
-    <div id="global-footer"></div>
-
-    <script>
-        fetch('./footer.html')
+    <div id="global-footer">
+        <script>
+            fetch('./menu.html')
             .then(res => res.text())
             .then(html => {
                 document.getElementById('global-footer').innerHTML = html;
             });
     </script>
-    <script src="js/footer.js"></script>
+    </div>
+
+    <script src="js/menu.js"></script>
 
 </body>
 

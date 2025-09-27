@@ -19,7 +19,7 @@ export function connect(user) {
     //         type: "formUser",
     //         user
     //     }));
-    // });
+    // }); 
 
     socket.addEventListener("message", (event) => {
         const data = JSON.parse(event.data);
@@ -27,7 +27,7 @@ export function connect(user) {
         switch (data.type) {
             case "chat":
                 //Muestra msg => modificar envío de datos y aplicar filtro.
-                addMessage(data.user, data.text, data.location, data.typeEmergency, data.user === user.name);
+                addMessage(data.user, data.text, data.time, data.user === user.name);
                 
                 break;
             case "system":

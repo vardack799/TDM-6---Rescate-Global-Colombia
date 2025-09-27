@@ -20,7 +20,7 @@ const toggleBtn = document.getElementById("usersToggle");
 const closeBtn = document.getElementById("closeSidebar");
 
 // Conectar al WebSocket
-connect(user);
+connect(user); 
 
 // Eventos
 chatForm.addEventListener("submit", function(e) {

@@ -41,10 +41,11 @@ function setupChat(wss) {
             // }
 
 
-
+ 
             if (data.type === "chat") {
                 
-                broadcast(users, { type: "chat", user: data.user, location: data.location, typeEmergency: data.typeEmergency, text: data.text});
+                broadcast(users, { type: "chat", user: data.user, location: data.location, typeEmergency: data.typeEmergency,
+                    time: new Date().toLocaleTimeString("es-ES", {hour: "2-digit", minute: "2-digit"}), text: data.text});
             }
         });
 

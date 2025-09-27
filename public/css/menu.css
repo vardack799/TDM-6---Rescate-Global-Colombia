@@ -1,4 +1,4 @@
-footer {
+.menu {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -12,7 +12,7 @@ footer {
     gap: 20px;
 }
 
-footer button {
+.menu button {
     background: none;
     border: none;
     font-size: 22px;
@@ -21,11 +21,11 @@ footer button {
     margin: 0 40px;
 }
 
-footer button:hover {
+menu button:hover {
     color: #ff6600;
 }
 
-.menuFooter .advertencias {
+.menu .advertencias {
   color: #F24822;    
   font-size: 24px;  
 }

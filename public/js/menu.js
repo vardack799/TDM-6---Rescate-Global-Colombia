@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const observer = new MutationObserver(() => {
-    const btnHome = document.querySelector(".menuFooter .home");
-    const btnAdvertencias = document.querySelector(".menuFooter .advertencias");
+    const btnHome = document.querySelector(".menu .home");
+    const btnAdvertencias = document.querySelector(".menu .warning");
 
     if (btnHome && btnAdvertencias) {
       // Evento: ir a inicio
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Evento: ir a advertencias
       btnAdvertencias.addEventListener("click", () => {
-        window.location.href = "/advertencias.html";
+        window.location.href = "./warningsChannel.html";
       });
 
       // Dejamos de observar una vez cargado el footer
