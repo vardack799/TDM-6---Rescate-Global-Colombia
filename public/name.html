@@ -7,7 +7,7 @@
     <title>Rescate Global Colombia - Nombre</title>
     <link rel="stylesheet" href="./css/name.css" />
     <link rel="stylesheet" href="./css/header.css" />
-    <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="./css/menu.css" />
 
     <script src="./js/header.js" defer></script>
 </head>
@@ -41,13 +41,13 @@
     <div id="global-footer"></div>
 
     <script>
-        fetch('./footer.html')
+        fetch('./menu.html')
             .then(res => res.text())
             .then(html => {
                 document.getElementById('global-footer').innerHTML = html;
             });
     </script>
-    <script src="js/footer.js"></script>
+    <script src="js/menu.js"></script>
 
 
 </body>

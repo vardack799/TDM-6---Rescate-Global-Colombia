@@ -1,32 +1,3 @@
-// Base de datos de ubicaciones de Colombia
-// const LOCATIONS_DATABASE = [
-//     "Bogotá, Cundinamarca",
-//     "Medellín, Antioquia", 
-//     "Cali, Valle del Cauca",
-//     "Barranquilla, Atlántico",
-//     "Cartagena, Bolívar",
-//     "Bucaramanga, Santander",
-//     "Pereira, Risaralda",
-//     "Manizales, Caldas",
-//     "Armenia, Quindío",
-//     "Ibagué, Tolima",
-//     "Villavicencio, Meta",
-//     "Tunja, Boyacá",
-//     "Neiva, Huila",
-//     "Santa Marta, Magdalena",
-//     "Montería, Córdoba",
-//     "Sincelejo, Sucre",
-//     "Popayán, Cauca",
-//     "Pasto, Nariño",
-//     "Valledupar, Cesar",
-//     "Riohacha, La Guajira",
-//     "Florencia, Caquetá",
-//     "Yopal, Casanare",
-//     "Mocoa, Putumayo",
-//     "San Andrés, San Andrés y Providencia",
-//     "Leticia, Amazonas"
-// ];
-
 const LOCATIONS_DATABASE = [
     "Los Muiscas, Tunja, Boyacá",
     "La Maria, Tunja, Boyacá",
@@ -96,7 +67,7 @@ function continuar() {
     localStorage.setItem('emergencyData', JSON.stringify(formData));
 
     // Redirigir directamente al chat con todos los parámetros
-    window.location.href = `chat.html?${chatParams.toString()}`;
+    window.location.href = `chat.html`;
 }
 
 //envio de formulario 
