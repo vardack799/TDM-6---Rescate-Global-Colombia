@@ -9,22 +9,16 @@
     <link rel="stylesheet" href="./css/header.css" />
     <link rel="stylesheet" href="./css/menu.css" />
 
-    <script src="./js/header.js" defer></script>
+    <script src="./components/header.js"></script>
+    <script src="./components/menu.js"></script>
 
 
 </head>
 
 <body>
-    <!-- header global -->
-    <div id="global-header">
-        <script>
-            fetch('./header.html')
-                .then(res => res.text())
-                .then(html => {
-                    document.getElementById('global-header').innerHTML = html;
-                });
-        </script>
-    </div>
+     
+    <!-- Header -->
+    <header-component></header-component>
 
     <!-- Main Container -->
     <div class="container">
@@ -62,19 +56,9 @@
         </div>
     </div>
 
+    <menu-component></menu-component>
+
     <script src="js/main.js"></script>
-
-    <div id="global-footer">
-        <script>
-            fetch('./menu.html')
-            .then(res => res.text())
-            .then(html => {
-                document.getElementById('global-footer').innerHTML = html;
-            });
-    </script>
-    </div>
-
-    <script src="js/menu.js"></script>
 
 </body>
 

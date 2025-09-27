@@ -8,7 +8,7 @@ function setupChat(wss) {
         let currentUser = null;
         const ip = req.headers['x-forwarded-for']?.split(',')[0].trim() || req.socket.remoteAddress;
 
-        ws.on("message", (msg) => {
+        ws.on("message", (msg) => { 
             const data = JSON.parse(msg);
 
             if (data.type === "login") {

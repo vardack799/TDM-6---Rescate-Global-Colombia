@@ -7,9 +7,10 @@ function selectEmergency(type) {
 
 
     };
+
     alert(`Has seleccionado: ${emergencyNames[type]}`);
     // Redirige a nombre.html con el nombre de la emergencia como parámetro
-    window.location.href = `name.html?emergency=${type}`;
+    window.location.href = `name.html?emergency=${emergencyNames[type]}`;
 }
 
 // Event listener para las tarjetas de emergencia

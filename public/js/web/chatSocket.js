@@ -1,4 +1,4 @@
-import { addMessage, addSystemMessage, updateUserList } from "../ui/chatUI.js";
+import { addMessage, addSystemMessage} from "../ui/chatUI.js";
 
 let socket; 
 
@@ -33,16 +33,16 @@ export function connect(user) {
             case "system":
                 addSystemMessage(data.text);
                 break;
-            case "users":
-                updateUserList(data.users);
-                break;
+            // case "users":
+            //     updateUserList(data.users);
+            //     break;
             default:
                 throw new Error("Tipo de mensaje desconocido: " + data.type);
         }
     });
 }
 
-//Envío de mensajes tipo chat
+//Envío de mensajes tipo chat al servidor
 export function sendMessage(userName, location, typeEmergency, text) {
     if (!socket || socket.readyState !== WebSocket.OPEN) return;
 

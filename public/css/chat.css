@@ -17,7 +17,7 @@ body {
 }
 
 /* Header */
-.chat-header {
+/* .chat-header {
     position: fixed;
     top: 0;
     left: 0;
@@ -40,7 +40,7 @@ body {
 .header-actions {
     display: flex;
     gap: 10px;
-}
+} */
 
 /* Main chat (mensajes) */
 .chat-main {

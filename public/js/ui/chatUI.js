@@ -1,10 +1,17 @@
 const messagesDiv = document.getElementById("messages");
-const userList = document.getElementById("userList");
-
-//Hora
-const date = new Date()
-
+// const userList = document.getElementById("userList");
  
+
+//Extrae la data del usuario del localStorage
+const dataStorage = localStorage.getItem("emergencyData")
+const userD = JSON.parse(dataStorage)
+let chatTitle = document.getElementById("chatTitle")
+let chatBoxTitle = document.getElementById("chatBox-title")
+
+//Sustituye el contenido del título de la página y del título del tema en chat.
+chatTitle.innerText = userD.emergency + " en " + userD.location
+chatBoxTitle.innerText = userD.emergency + " en " + userD.location
+
 function fixChatHeight() {
     document.querySelector(".chat-container").style.height = window.innerHeight + "px";
 }
@@ -31,39 +38,39 @@ export function addSystemMessage(text) {
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
 
-export function updateUserList(users) {
-    userList.innerHTML = "";
-    users.forEach(u => {
-        const li = document.createElement("li");
-        li.classList.add("user-item");
+// export function updateUserList(users) {
+//     userList.innerHTML = "";
+//     users.forEach(u => {
+//         const li = document.createElement("li");
+//         li.classList.add("user-item");
 
-        li.innerHTML = `
-            <div class="user-avatar">
-                <img src="${u.img}" alt="${u.name}" class="avatar-img">
-                <span class="status ${u.connected ? "online" : "offline"}"></span>
-            </div>
-            <div class="user-info">
-                <span class="user-name">${u.name}</span>
-                <small class="user-role">${u.rol}</small>
-            </div>
-        `;
+//         li.innerHTML = `
+//             <div class="user-avatar">
+//                 <img src="${u.img}" alt="${u.name}" class="avatar-img">
+//                 <span class="status ${u.connected ? "online" : "offline"}"></span>
+//             </div>
+//             <div class="user-info">
+//                 <span class="user-name">${u.name}</span>
+//                 <small class="user-role">${u.rol}</small>
+//             </div>
+//         `;
 
-        userList.appendChild(li);
-    });
-}
+//         userList.appendChild(li);
+//     });
+// }
 
-export function showUserList(list, show) {
-    if (show) {
-        list.classList.add("active");
-    } else {
-        list.classList.remove("active");
-    }
-}
+// export function showUserList(list, show) {
+//     if (show) {
+//         list.classList.add("active");
+//     } else {
+//         list.classList.remove("active");
+//     }
+// }
 
-export function clearUser() {
-    localStorage.removeItem("username");
-}
+// export function clearUser() {
+//     localStorage.removeItem("username");
+// }
 
-export function redirectToLogin() {
-    window.location.href = "/login.html";
-}
+// export function redirectToLogin() {
+//     window.location.href = "/login.html";
+// }

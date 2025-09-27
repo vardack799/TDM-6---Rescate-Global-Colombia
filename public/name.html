@@ -4,24 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rescate Global Colombia - Nombre</title>
+    <title>Ingreso de nombre</title>
     <link rel="stylesheet" href="./css/name.css" />
-    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/header.css" /> 
     <link rel="stylesheet" href="./css/menu.css" />
 
-    <script src="./js/header.js" defer></script>
+    <script src="./components/header.js"></script>
+    
 </head>
 
 <body>
-    <!-- Header global -->
-    <div id="global-header"></div>
-    <script>
-        fetch('header.html')
-            .then(res => res.text())
-            .then(html => {
-                document.getElementById('global-header').innerHTML = html;
-            });
-    </script>
+    
+    <!-- Header -->
+    <header-component></header-component>
 
     <div class="container">
         <!-- <h1 id="emergencyTitle"></h1> -->
