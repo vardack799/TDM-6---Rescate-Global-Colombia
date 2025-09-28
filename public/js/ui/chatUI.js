@@ -30,6 +30,24 @@ export function addMessage(user, text, time, isSelf = false) {
 
 }
 
+export function loadMessages(data, userName){
+    const dataOb = JSON.parse(data)
+    console.log(dataOb)
+
+    dataOb.forEach(i => {
+
+        const msgEl = document.createElement("div");
+        msgEl.classList.add("message");
+        msgEl
+        if (userName === i.user) msgEl.classList.add("self");
+        msgEl.innerHTML = `<strong>${i.user}: </strong><br>${i.text}
+        <br> <small>${i.time}</small>`;
+        messagesDiv.appendChild(msgEl);
+        messagesDiv.scrollIntoView({behavior: "smooth", block: "end"})
+
+    })
+}
+
 export function addSystemMessage(text) {
     const msgEl = document.createElement("div");
     msgEl.classList.add("message", "system");

@@ -1,4 +1,4 @@
-import { addMessage, addSystemMessage} from "../ui/chatUI.js";
+import { addMessage, addSystemMessage, loadMessages} from "../ui/chatUI.js";
 
 let socket; 
 
@@ -33,9 +33,9 @@ export function connect(user) {
             case "system":
                 addSystemMessage(data.text);
                 break;
-            // case "users":
-            //     updateUserList(data.users);
-            //     break;
+            case "msgD":
+                 loadMessages(JSON.stringify(data.msgsD), user.name)
+                 break;
             default:
                 throw new Error("Tipo de mensaje desconocido: " + data.type);
         }

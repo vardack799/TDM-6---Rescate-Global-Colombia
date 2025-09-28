@@ -1,6 +1,6 @@
 const broadcast = require("../utils/broadcast");
 const { getUsers } = require("../models/users");
-const { saveMessages } = require("../models/msg"); 
+const { saveMessages, getMessages} = require("../models/msg"); 
 
 let users = [];
 
@@ -18,7 +18,20 @@ function setupChat(wss) {
 
                 console.log(`${new Date().toISOString()} - 🟢 Usuario conectado (${currentUser.name} | IP: ${ip} lugar: ${currentUser.location})`);
 
-                broadcast(users, { type: "system", typeEmergency: data.user.emergency, location:data.user.location, text: `¡Bienvenido ${currentUser.name}! :D` });
+                broadcast(users, { type: "system", typeEmergency: data.user.emergency, location: data.user.location, text: `¡Bienvenido ${currentUser.name}! :D` });
+                
+                const allmsgs = getMessages(data.user.location, data.user.emergency)
+                
+                broadcast(users, {
+                    type: "msgD", 
+                    msgsD: allmsgs.map(m => ({
+                        "user": m.user,
+                        "location": m.location,
+                        "typeEmergency": m.typeEmergency,
+                        "time": m.time,
+                        "text": m.text
+                    }))
+                })
 
                 // const allUsers = getUsers();
                 // broadcast(users, {
@@ -54,6 +67,7 @@ function setupChat(wss) {
                     typeEmergency: data.typeEmergency,
                     time: new Date().toLocaleTimeString("es-ES", {hour: "2-digit", minute: "2-digit"}), text: data.text
                 }
+
                 saveMessages(msg)
             }
         });

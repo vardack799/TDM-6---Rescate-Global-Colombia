@@ -1,11 +1,24 @@
 const { KeyObject } = require("crypto");
 const fs = require("fs");
 const path = require("path");
+const { json } = require("stream/consumers");
 
 const MESSAGES_FILE = path.join(__dirname, "..", "data", "msgData.json");
 
-function getMessages() {
-    return JSON.parse(fs.readFileSync(MESSAGES_FILE, "utf8"));
+//retorna la data segun el lugar y emergencia del usuario actual
+function getMessages(location, typeEmergency) {
+    let messages = JSON.parse(fs.readFileSync(MESSAGES_FILE, "utf8"))
+    let msgsReturn = []
+
+    messages.forEach(u => {
+        if (u.location === location && u.typeEmergency === typeEmergency) {
+            msgsReturn.push(u)
+        }else{
+            console.log("Datos no encontrados...")
+        }
+
+    });
+    return msgsReturn
 }
 
 function saveMessages(msg) {
@@ -14,16 +27,25 @@ function saveMessages(msg) {
     if (fs.existsSync(MESSAGES_FILE)) {
         const data = fs.readFileSync(MESSAGES_FILE, "utf8")
         msgs = JSON.parse(data)
-        console.log(Object.keys(msgs))
     } else {
         console.log("ERROR: Documento no encontrado :(")
     }
 
     msgs.push(msg)
 
-    console.log(msgs)
-
     fs.writeFileSync(MESSAGES_FILE, JSON.stringify(msgs, null, 2));
 }
 
-module.exports = { getMessages, saveMessages };
+function deleteMessages(){
+    fs.writeFileSync(MESSAGES_FILE, JSON.stringify([], null, 2));
+}
+
+//Elimina la data de mensajes cada cierto intervalo de tiempo
+const timeI = 3600000
+
+const clearMsgs = setInterval(() => {
+    deleteMessages()
+    console.log("Mensajes eliminados")
+}, timeI)
+
+module.exports = { getMessages, saveMessages, deleteMessages};
