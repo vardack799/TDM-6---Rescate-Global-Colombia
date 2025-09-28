@@ -14,6 +14,7 @@
     --color-grey: #252525;
     --color-black: #000000;
     --color-light-blue: #6EBCFC;
+    --color-dark-blue: #5690c0;
     --color-red: #E2000F;
     --color-dark-red: #7b0000;
     --color-brown: #65423A;
@@ -64,6 +65,7 @@ header-component header{
     height: 60px; 
     width: 100%;
     box-shadow: 0px 10px 30px var(--color-orange);
+    z-index: 1000;
 }
 
 

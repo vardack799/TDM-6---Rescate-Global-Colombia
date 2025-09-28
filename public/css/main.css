@@ -1,12 +1,3 @@
-/* body {
-    font-family: "Roboto", sans-serif;
-    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
-    min-height: 100vh;
-    overflow-x: hidden;
-} */ 
-
-
-
 /* Main Container */
 .container {
     padding: 80px 10px;
@@ -38,6 +29,7 @@
     border: 3px solid transparent;
     position: relative;
     overflow: hidden;
+
 }
 
 .emergency-card::before {
@@ -72,8 +64,8 @@
 }
 
 .emergency-card.flood:hover {
-    border-color: #2980b9;
-    box-shadow: 0 15px 30px rgba(52, 152, 219, 0.4);
+    border-color: var(--color-light-blue);
+    box-shadow: 0 15px 30px var(--color-dark-blue);
     color: var(--color-light-blue);
 }
 
@@ -83,8 +75,8 @@
 }
 
 .emergency-card.earthquake:hover {
-    border-color: #d35400;
-    box-shadow: 0 15px 30px rgba(230, 126, 34, 0.4);
+    border-color: var(--color-light-brown);
+    box-shadow: 0 15px 30px var(--color-brown);
     color: var(--color-light-brown);
 }
 
@@ -94,33 +86,26 @@
 }
 
 .emergency-card.fire:hover {
-    border-color: #c0392b;
-    box-shadow: 0 15px 30px rgba(231, 76, 60, 0.4);
+    border-color: var(--color-red);
+    box-shadow: 0 15px 30px var(--color-dark-red);
     color: var(--color-red);
 }
 
 .emergency-card.other {
-    background: #e67e22;
+    background: var(--color-orange);
     color: white;
     transition: 0.5s ease;
 }
 
 .emergency-card.other:hover {
-    border-color: #e67e22;
-    box-shadow: 0 15px 30px rgba(243, 156, 18, 0.4);
-}
-
-.emergency-icon {
-    font-size: 4rem;
-    margin-bottom: 20px;
-    display: block;
+    border-color: var(--color-white);
+    box-shadow: 0 15px 30px var(--color-black);
 }
 
 .emergency-title {
     color: white;
-    font-size: 1.5rem;
+    font-size: var(--font-size-xl);
     font-weight: bold;
-    margin: 0;
 }
 
 /* Current Emergencies Panel */
@@ -181,7 +166,7 @@
 }
 
 /* Responsive Design */
-@media (max-width: 722px) {
+@media (max-width: 768px) {
     .header h1 {
         font-size: 1.4rem;
     }
@@ -200,14 +185,6 @@
         border-radius: var(--radius-lg);
     }
 
-    .emergency-icon {
-        /* font-size: 3rem; */
-    }
-
-    .emergency-title {
-        /* font-size: 1.2rem; */
-    }
-
     .current-emergencies {
         position: fixed;
         bottom: 48px;
@@ -216,35 +193,39 @@
         right: 0;
     }
 
-    /* .container {
-        padding: 20px 10px;
-    } */
 }
 
 @media (max-width: 480px) {
     .emergency-grid {
         grid-template-columns: 1fr 1fr ;
-        gap: 6px;
+        gap: var(--spacing-sm);
     }
-
-    .emergency-card {
-        padding: 20px 10px;
-        font-size: 0.95rem;
-    }
-
-
-    .emergency-icon {
-        font-size: 2.5rem;
-    }
-
 
     .main-title {
-        font-size: 1.8rem;
+        font-size: var(--font-size-xxl);
+        margin-bottom: var(--spacing-sm);
     }
 
-    .current-emergencies {
+    /* .current-emergencies {
         margin: 20px 10px 0;
         width: calc(100% - 20px);
-    }
+    } */
 }
 
+@media (max-width: 380px) {
+    .emergency-grid {
+        gap: var(--spacing-sm);
+    }
+
+    .main-title {
+        font-size: var(--font-size-xl);
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .emergency-icon svg {
+        display: flex;
+        justify-self: center;
+        scale: 0.8;
+    }
+
+}
