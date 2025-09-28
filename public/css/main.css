@@ -72,7 +72,7 @@ body {
 }
 
 .emergency-card.flood {
-    border-color: #3498db;
+    color: white;
 }
 
 .emergency-card.flood:hover {
@@ -81,7 +81,7 @@ body {
 }
 
 .emergency-card.earthquake {
-    border-color: #e67e22;
+    color: white;
 }
 
 .emergency-card.earthquake:hover {
@@ -90,7 +90,7 @@ body {
 }
 
 .emergency-card.fire {
-    border-color: #e74c3c;
+    color: white;
 }
 
 .emergency-card.fire:hover {
@@ -100,7 +100,7 @@ body {
 
 .emergency-card.other {
     background: #e67e22;
-    border-color: #f39c12;
+    color: white;
 }
 
 .emergency-card.other:hover {

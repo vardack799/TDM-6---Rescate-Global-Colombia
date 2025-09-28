@@ -28,8 +28,8 @@ class MenuComponent extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
           <div class="menu">
-            <button class="home">🏠</button>
-            <button class="warning">⚠</button>
+            <button class="home"><i class="fa-regular fa-house"></i></button>
+            <button class="warning"><i class="fa-solid fa-triangle-exclamation"></i></button>
           </div>
         `;
     }
