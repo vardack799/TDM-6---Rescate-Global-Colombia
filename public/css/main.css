@@ -55,7 +55,6 @@
 
 .emergency-card:active{
     scale: 1.1;
-
 }
 
 .emergency-card.flood {
@@ -97,9 +96,19 @@
     transition: 0.5s ease;
 }
 
-.emergency-card.other:hover {
-    border-color: var(--color-white);
-    box-shadow: 0 15px 30px var(--color-black);
+.emergency-card.other:hover{
+    color: var(--color-orange);
+    background-color: var(--color-white);
+    border-color: var(--color-orange);
+    box-shadow: 0 15px 30px var(--color-orange);
+}
+
+.emergency-card.other .emergency-title {
+    text-shadow: 
+        -1px -1px 0 var(--color-black),
+         1px -1px 0 var(--color-black),
+        -1px  1px 0 var(--color-black),
+         1px  1px 0 var(--color-black);
 }
 
 .emergency-title {
@@ -167,10 +176,6 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .header h1 {
-        font-size: 1.4rem;
-    }
-
     .main-title {
         font-size: var(--font-size-xxl);
     }
