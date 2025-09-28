@@ -27,7 +27,7 @@ export function addMessage(user, text, time, isSelf = false) {
     msgEl.innerHTML = `<strong>${user}: </strong><br>${text}
     <br> <small>${time}</small>`;
     messagesDiv.appendChild(msgEl);
-    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    messagesDiv.scrollIntoView({behavior: "smooth", block: "end"})
 }
 
 export function addSystemMessage(text) {

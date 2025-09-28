@@ -25,17 +25,17 @@ document.querySelectorAll('.emergency-card').forEach(card => {
     );
 });
 
-// Close sidebar when clicking on a sidebar item
-document.querySelectorAll('.sidebar-item').forEach(item => {
-    item.addEventListener('click', () => {
-        toggleSidebar();
-    });
-});
+// // Close sidebar when clicking on a sidebar item
+// document.querySelectorAll('.sidebar-item').forEach(item => {
+//     item.addEventListener('click', () => {
+//         toggleSidebar();
+//     });
+// });
 
-// Handle responsive behavior
-window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) {
-        document.querySelector('.sidebar').classList.remove('active');
-        document.querySelector('.overlay').classList.remove('active');
-    }
-});
+// // Handle responsive behavior
+// window.addEventListener('resize', () => {
+//     if (window.innerWidth > 768) {
+//         document.querySelector('.sidebar').classList.remove('active');
+//         document.querySelector('.overlay').classList.remove('active');
+//     }
+// });

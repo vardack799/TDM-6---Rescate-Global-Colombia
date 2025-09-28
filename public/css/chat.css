@@ -1,19 +1,9 @@
-body {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-}
-
 /* Chat container */
 .chat-container {
     display: flex;
     flex-direction: column; 
-    height: 100dvh;
     width: 100%;
-    overflow: hidden;
-    padding-top: 56px;
-    box-sizing: border-box;
-    background-color: var(--color-background);
+    background-color: var(--color-white);
 }
 
 /* Header */
@@ -45,6 +35,7 @@ body {
 /* Main chat (mensajes) */
 .chat-main {
     flex: 1;
+    margin-top: 60px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     padding: var(--spacing-lg);
@@ -75,14 +66,14 @@ body {
 
 .message.self {
     align-self: flex-end;
-    background: var(--color-tertiary);
-    color: var(--color-white);
+    background: var(--color-white);
+    color: var(--color-black);
     border-bottom-right-radius: 0;
 }
 
 .message.system {
     align-self: stretch;
-    color: var(--color-primary);
+    color: var(--color-black);
     text-align: center;
     padding: var(--spacing-md);
     max-width: 100%;
@@ -90,17 +81,17 @@ body {
 
 /* Input */
 .chat-input {
-    position: sticky;
-    bottom: 0;
-    z-index: 100;
     display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     padding: var(--spacing-md);
     background: #fff;
     border-top: 1px solid #ddd;
 }
 
 .chat-input input {
-    flex: 1;
+    flex: 0 1 94%;
     padding: var(--spacing-md);
     border: 1px solid #ccc;
     border-radius: var(--radius-md);
@@ -109,19 +100,17 @@ body {
 
 .send-btn {
     margin-left: var(--spacing-md);
-    background: var(--color-primary);
+    background: transparent;
+    color: var(--color-light-blue);
     border: none;
-    border-radius: 50%;
-    color: white;
     width: 45px;
     height: 45px;
     font-size: var(--font-size-lg);
     cursor: pointer;
-    display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .send-btn:hover {
-    background: var(--color-hover);
+    color: var(--color-hover-btn);
 }
