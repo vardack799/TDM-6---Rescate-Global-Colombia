@@ -40,7 +40,7 @@ if (emergencyType && emergencyNames[emergencyType]) {
 
 // Función continuar 
 function continuar() {
-    const nombre = document.getElementById('nombre').value;
+    const nombre = document.getElementById('nombre').value; 
 
     if (nombre.trim() === "") {
         alert("Por favor ingrese su nombre.");
@@ -80,25 +80,3 @@ document.getElementById("userForm").addEventListener("submit", async function(e)
     continuar()
 
 });
-
-// document.getElementById("btnContinue").addEventListener("click", ()=>{
-//     continuar()
-// })
-
-// Permitir envío con Enter
-// document.getElementById('nombre').addEventListener('keypress', function (e) {
-//     if (e.key === 'Enter') {
-//         continuar();
-//     }
-
-//     // // Guardar datos en localStorage
-//     // const chatData = {
-//     //     emergency: emergencyType,
-//     //     name: nombre.trim(),
-//     //     location: ubicacionAleatoria
-//     // };
-
-//     // Redirigir sin parámetros
-//     // window.location.href = 'chat.html';
-
-// });

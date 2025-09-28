@@ -1,6 +1,5 @@
 const messagesDiv = document.getElementById("messages");
 // const userList = document.getElementById("userList");
- 
 
 //Extrae la data del usuario del localStorage
 const dataStorage = localStorage.getItem("emergencyData")
@@ -28,6 +27,7 @@ export function addMessage(user, text, time, isSelf = false) {
     <br> <small>${time}</small>`;
     messagesDiv.appendChild(msgEl);
     messagesDiv.scrollIntoView({behavior: "smooth", block: "end"})
+
 }
 
 export function addSystemMessage(text) {

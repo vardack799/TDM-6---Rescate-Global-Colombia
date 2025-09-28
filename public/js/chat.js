@@ -10,7 +10,7 @@ const user = JSON.parse(dataStorage)
 // console.log(user.name) 
 
 // document.getElementById("chat-username").textContent = "Bienvenido " + user.name;
-
+ 
 // Sidebar y controles
 const chatForm = document.getElementById("chatForm");
 const messageInput = document.getElementById("messageInput");

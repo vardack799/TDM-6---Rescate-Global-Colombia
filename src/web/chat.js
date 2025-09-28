@@ -1,9 +1,10 @@
 const broadcast = require("../utils/broadcast");
 const { getUsers } = require("../models/users");
+const { saveMessages } = require("../models/msg"); 
 
 let users = [];
 
-function setupChat(wss) { 
+function setupChat(wss) {  
     wss.on("connection", (ws, req) => { 
         let currentUser = null;
         const ip = req.headers['x-forwarded-for']?.split(',')[0].trim() || req.socket.remoteAddress;
@@ -11,11 +12,11 @@ function setupChat(wss) {
         ws.on("message", (msg) => { 
             const data = JSON.parse(msg);
 
-            if (data.type === "login") {
+            if (data.type === "formUser") {
                 currentUser = { id: data.user.id, name: data.user.name, location: data.user.location, typeEmergency: data.user.emergency, ws};
                 users.push(currentUser);
 
-                console.log(`${new Date().toISOString()} - 🟢 Cliente conectado (${currentUser.name} | ${ip} lugar: ${currentUser.location})`);
+                console.log(`${new Date().toISOString()} - 🟢 Usuario conectado (${currentUser.name} | IP: ${ip} lugar: ${currentUser.location})`);
 
                 broadcast(users, { type: "system", typeEmergency: data.user.emergency, location:data.user.location, text: `¡Bienvenido ${currentUser.name}! :D` });
 
@@ -46,12 +47,20 @@ function setupChat(wss) {
                 
                 broadcast(users, { type: "chat", user: data.user, location: data.location, typeEmergency: data.typeEmergency,
                     time: new Date().toLocaleTimeString("es-ES", {hour: "2-digit", minute: "2-digit"}), text: data.text});
+
+                const msg = {
+                    user: data.user, 
+                    location: data.location, 
+                    typeEmergency: data.typeEmergency,
+                    time: new Date().toLocaleTimeString("es-ES", {hour: "2-digit", minute: "2-digit"}), text: data.text
+                }
+                saveMessages(msg)
             }
         });
 
         ws.on("close", () => {
             if (currentUser) {
-                console.log(`${new Date().toISOString()} - 🔴 Cliente desconectado (${currentUser.name} | ${ip}, lugar: ${currentUser.location})`);
+                console.log(`${new Date().toISOString()} - 🔴 Usuario desconectado (${currentUser.name} | ${ip}, lugar: ${currentUser.location})`);
                 users = users.filter(u => u !== currentUser);
 
                 broadcast(users, { type: "system", text: `${currentUser.name} salió` });

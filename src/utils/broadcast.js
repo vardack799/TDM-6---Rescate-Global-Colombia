@@ -7,4 +7,4 @@ function broadcast(users, data) {
     }); 
 } 
 
-module.exports = broadcast;
+module.exports = broadcast; 

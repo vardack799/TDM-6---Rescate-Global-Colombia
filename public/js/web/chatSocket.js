@@ -2,24 +2,24 @@ import { addMessage, addSystemMessage} from "../ui/chatUI.js";
 
 let socket; 
 
-export function connect(user) { 
+export function connect(user) {  
     let wsUrl = location.hostname === "localhost" ? "ws://localhost:3000" : `wss://${location.host}`;
 
     socket = new WebSocket(wsUrl);
 
-    socket.addEventListener("open", () => {
-        socket.send(JSON.stringify({
-            type: "login",
-            user
-        }));
-    });
-
     // socket.addEventListener("open", () => {
-    // socket.send(JSON.stringify({
-    //         type: "formUser",
+    //     socket.send(JSON.stringify({
+    //         type: "login",
     //         user
     //     }));
-    // }); 
+    // });
+
+    socket.addEventListener("open", () => {
+    socket.send(JSON.stringify({
+            type: "formUser",
+            user
+        }));
+    }); 
 
     socket.addEventListener("message", (event) => {
         const data = JSON.parse(event.data);
