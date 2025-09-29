@@ -13,10 +13,7 @@ function getMessages(location, typeEmergency) {
     messages.forEach(u => {
         if (u.location === location && u.typeEmergency === typeEmergency) {
             msgsReturn.push(u)
-        }else{
-            console.log("Datos no encontrados...")
         }
-
     });
     return msgsReturn
 }

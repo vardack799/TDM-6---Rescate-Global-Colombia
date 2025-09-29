@@ -1,31 +1,29 @@
 <!DOCTYPE html>
-<html lang="es"> 
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingreso de nombre</title>
-    <link rel="stylesheet" href="./css/name.css"/>
-    <link rel="stylesheet" href="./css/name.css"/>
+    <title>Más emergencias</title>
+    <link rel="stylesheet" href="./css/menu.css" />
+    <link rel="stylesheet" href="./css/otherEmergency.css" />
     <link rel="stylesheet" href="./css/globalStyles.css" />
     <script src="https://kit.fontawesome.com/55ed1da071.js" crossorigin="anonymous"></script>
 
     <script src="./components/header.js"></script>
     <script src="./components/menu.js"></script>
-    
 </head>
- 
 <body>
     
     <!-- Header -->
     <header-component></header-component>
 
     <div class="container">
-        <h2>A continuación digite su nombre</h2>
+        <h2>A continuación ingrese un tipo de emergencia</h2>
 
-        <form id="userForm">
+        <form id="emergencyForm">
             <div class="input-box">
-                <input type="text" id="nombre" placeholder="Ingrese su nombre...">
+                <input type="text" id="searchI" placeholder="Ingrese un tipo de emergencia...">
+                <div id="suggestions"></div>
             </div>
             <button id="btnContinue" class="btn" type="submit">Continuar</button>
         </form>
@@ -35,8 +33,6 @@
     <!-- Menú -->
     <menu-component></menu-component>
 
-    <script src="js/name.js"></script>
-
+    <script src="./js/otherEmergency.js"></script>
 </body>
-
 </html>

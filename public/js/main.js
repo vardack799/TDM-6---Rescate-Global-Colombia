@@ -4,13 +4,15 @@ function selectEmergency(type) {
         'earthquake': 'Terremoto',
         'fire': 'Incendio',
         'other': 'Otra emergencia'
-
-
     };
 
     alert(`Has seleccionado: ${emergencyNames[type]}`);
     // Redirige a nombre.html con el nombre de la emergencia como parámetro
-    window.location.href = `name.html?emergency=${emergencyNames[type]}`;
+    if (type != "other") {
+        window.location.href = `name.html?emergency=${emergencyNames[type]}`;
+    }else {
+        window.location.href = `otherEmergency.html`
+    }
 }
 
 // Event listener para las tarjetas de emergencia
@@ -24,18 +26,3 @@ document.querySelectorAll('.emergency-card').forEach(card => {
 
     );
 });
-
-// // Close sidebar when clicking on a sidebar item
-// document.querySelectorAll('.sidebar-item').forEach(item => {
-//     item.addEventListener('click', () => {
-//         toggleSidebar();
-//     });
-// });
-
-// // Handle responsive behavior
-// window.addEventListener('resize', () => {
-//     if (window.innerWidth > 768) {
-//         document.querySelector('.sidebar').classList.remove('active');
-//         document.querySelector('.overlay').classList.remove('active');
-//     }
-// });

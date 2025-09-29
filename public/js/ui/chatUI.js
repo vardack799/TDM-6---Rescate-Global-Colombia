@@ -27,7 +27,6 @@ export function addMessage(user, text, time, isSelf = false) {
     <br> <small>${time}</small>`;
     messagesDiv.appendChild(msgEl);
     messagesDiv.scrollIntoView({behavior: "smooth", block: "end"})
-
 }
 
 export function loadMessages(data, userName){

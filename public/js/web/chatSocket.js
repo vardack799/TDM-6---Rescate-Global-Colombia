@@ -26,9 +26,8 @@ export function connect(user) {
         
         switch (data.type) {
             case "chat":
-                //Muestra msg => modificar envío de datos y aplicar filtro.
                 addMessage(data.user, data.text, data.time, data.user === user.name);
-                
+
                 break;
             case "system":
                 addSystemMessage(data.text);
