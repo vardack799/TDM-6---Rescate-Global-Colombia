@@ -1,7 +1,4 @@
-const searchI = document.getElementById("searchI")
-const suggestions = document.getElementById("suggestions")
-
-//Data de 60 emergencias sugeridas
+// Data de 60 emergencias sugeridas
 const dataSuggest = {
   "landslide": "Deslizamiento de tierra",
   "tornado": "Tornado",
@@ -29,7 +26,7 @@ const dataSuggest = {
   "power_outage": "Apagón eléctrico",
   "water_contamination": "Contaminación del agua",
   "structural_damage": "Daño estructural",
-    "sinkhole": "Socavón",
+  "sinkhole": "Socavón",
   "storm": "Tormenta severa",
   "hailstorm": "Granizada",
   "lightning_strike": "Descarga eléctrica",
@@ -59,5 +56,56 @@ const dataSuggest = {
   "pest_infestation": "Infestación de plagas",
   "hazmat_incident": "Incidente de materiales peligrosos",
   "structural_fire": "Incendio estructural"
+};
+
+const searchCont = document.querySelector(".input-box");
+const searchI = document.getElementById("searchI");
+const suggestions = document.getElementById("suggestions");
+
+searchI.addEventListener("keyup", (e) => {
+  let dataS = e.target.value;
+  let emptyA = [];
+  
+  if (dataS) {
+    // Convertir el objeto a array de valores
+    const emergencyValues = Object.values(dataSuggest);
+    
+    // Filtrar las emergencias que coincidan
+    emptyA = emergencyValues.filter((emergency) => {
+      return emergency.toLowerCase().startsWith(dataS.toLowerCase());
+    });
+
+    // Mapear a elementos li
+    emptyA = emptyA.map((data) => {
+      return `<li>${data}</li>`;
+    });
+
+    searchCont.classList.add("active");
+    showSuggestions(emptyA);
+    
+    // Agregar evento click a cada sugerencia
+    let allList = suggestions.querySelectorAll("li");
+    for (let index = 0; index < allList.length; index++) {
+      allList[index].setAttribute("onclick", "select(this)");
+    }
+  } else {
+    searchCont.classList.remove("active");
+  }
+});
+
+function select(item) {
+  let selectD = item.textContent;
+  searchI.value = selectD;
+  searchCont.classList.remove("active");
 }
 
+function showSuggestions(list) {
+  let listD;
+  if (!list.length) {
+    userValue = searchI.value;
+    listD = `<li>No hay coincidencias</li>`;
+  } else {
+    listD = list.join("");
+  }
+  suggestions.innerHTML = listD;
+}

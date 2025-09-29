@@ -71,6 +71,38 @@ body {
     1px  1px 0 var(--color-black);
 }
 
+.input-box #suggestions {
+    opacity: none;
+    pointer-events: none;
+    max-width: 300px;
+    overflow-y: auto;
+    background: transparent;
+    border: 1px solid var(--color-orange);
+    box-shadow: 0 15px 30px var(--color-orange);
+}
+
+.input-box.active #suggestions{
+    padding: var(--spacing-sm);
+    pointer-events: auto;
+}
+
+#suggestions li {
+    list-style: none;
+    padding: var(--spacing-sm);
+    display: none;
+    width: 100%;
+    cursor: default;
+    border-radius: var(--radius-sm);
+}
+
+.input-box.active #suggestions li {
+    display: block;
+}
+
+#suggestions li:hover {
+    background: var(--color-orange);
+}
+
 @media (max-width: 768px) {
     .container h2 {
         font-size: var(--font-size-xxl);

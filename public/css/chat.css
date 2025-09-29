@@ -82,6 +82,7 @@
     border: 2px solid var(--color-orange);
     border-radius: var(--radius-xlg);
     font-size: var(--font-size-md);
+    outline: none;
 }
 
 .chat-input input:focus {
