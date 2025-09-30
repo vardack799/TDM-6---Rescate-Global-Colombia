@@ -4,17 +4,19 @@ const path = require("path");
 const WebSocket = require("ws");
 const handleUsersRoutes = require("./routes/users");
 const handleAuthRoutes = require("./routes/auth");
+const handleMessagesRoutes = require("./routes/messages")
 const setupChat = require("./web/chat");
 
 const PORT = 3000;
 const PUBLIC_PATH = path.join(__dirname, "..", "public");
-
+ 
 const server = http.createServer((req, res) => {
     console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
 
     // Rutas API
     if (handleUsersRoutes(req, res)) return;
     if (handleAuthRoutes(req, res)) return;
+    if (handleMessagesRoutes (req, res)) return
 
     // Archivos estáticos
     //url parseada quitando parametros de query

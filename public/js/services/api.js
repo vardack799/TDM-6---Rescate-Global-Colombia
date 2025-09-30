@@ -1,5 +1,6 @@
 const API_USERS_URL = "/api/users";
 const API_LOGIN_URL = "/api/login";
+const API_MESSAGES_URL = "/api/messages"
 
 export async function login(name, password) {
     const res = await fetch(API_LOGIN_URL, {
@@ -9,6 +10,13 @@ export async function login(name, password) {
     });
     
     if (!res.ok) throw new Error("Credenciales inválidas");
+    return res.json();
+}
+
+export async function getMessages() {
+    const res = await fetch(API_MESSAGES_URL)
+    
+    if (!res.ok) throw new Error("Error al cargar mensajes");
     return res.json();
 }
 

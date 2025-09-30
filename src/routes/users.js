@@ -6,7 +6,7 @@ function handleUsersRoutes(req, res) {
         const parts = req.url.split("/").filter(Boolean);
         const id = parts[2] ? parseInt(parts[2]) : null;
 
-        // GET /api/users
+        // GET /api/users 
         if (method === "GET" && parts.length === 2) {
             const users = getUsers();
             res.writeHead(200, { "Content-Type": "application/json" });

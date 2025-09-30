@@ -7,7 +7,7 @@ function handleAuthRoutes(req, res) {
         // POST /api/login
         if (method === "POST") {
             let body = "";
-            req.on("data", chunk => (body += chunk));
+            req.on("data", chunk => (body += chunk)); 
             req.on("end", () => {
                 try {
                     const { name, password } = JSON.parse(body);

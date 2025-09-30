@@ -1,5 +1,10 @@
-const messagesDiv = document.getElementById("messages");
-// const userList = document.getElementById("userList");
+const messagesDiv = document.getElementById("messages"); 
+import { getMessages } from "../services/api.js"; //importa el método getMesagges() desde api.js para traer los mensajes guardados desde el backend
+
+const messages = await getMessages()
+console.log(JSON.stringify(messages, null, 2) + "Mensajes de backend a front por API")
+
+// const userList = document.getElementById("userList"); 
 
 //Extrae la data del usuario del localStorage
 const dataStorage = localStorage.getItem("emergencyData")

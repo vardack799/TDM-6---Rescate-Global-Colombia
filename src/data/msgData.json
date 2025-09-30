@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "user": "Luis",
+    "location": "El Bosque, Tunja, Boyacá",
+    "typeEmergency": "Inundacion",
+    "time": "08:57",
+    "text": "Hola!"
+  },
+  {
+    "user": "Luis",
+    "location": "El Bosque, Tunja, Boyacá",
+    "typeEmergency": "Inundacion",
+    "time": "08:57",
+    "text": "Qué tal?"
+  },
+  {
+    "user": "Jose",
+    "location": "La Candelaria, Tunja, Boyacá",
+    "typeEmergency": "Inundacion",
+    "time": "08:58",
+    "text": "Hola!, aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+    "user": "Jose",
+    "location": "Los Muiscas, Tunja, Boyacá",
+    "typeEmergency": "Inundacion",
+    "time": "09:37",
+    "text": "Hola! bbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  }
+]

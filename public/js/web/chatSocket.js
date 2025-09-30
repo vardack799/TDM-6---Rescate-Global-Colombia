@@ -14,7 +14,7 @@ export function connect(user) {
     //     }));
     // });
 
-    socket.addEventListener("open", () => {
+    socket.addEventListener("open", () => { 
     socket.send(JSON.stringify({
             type: "formUser",
             user

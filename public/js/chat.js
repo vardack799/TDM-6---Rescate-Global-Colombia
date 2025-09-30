@@ -13,7 +13,7 @@ const user = JSON.parse(dataStorage)
  
 // Sidebar y controles
 const chatForm = document.getElementById("chatForm");
-const messageInput = document.getElementById("messageInput");
+const messageInput = document.getElementById("messageInput"); 
 // const logoutBtn = document.getElementById("logoutBtn"); 
 // const sidebar = document.getElementById("userSidebar");
 // const toggleBtn = document.getElementById("usersToggle");

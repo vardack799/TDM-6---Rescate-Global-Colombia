@@ -2,7 +2,7 @@ function selectEmergency(type) {
     const emergencyNames = {
         'flood': 'Inundacion',
         'earthquake': 'Terremoto',
-        'fire': 'Incendio',
+        'fire': 'Incendio', 
         'other': 'Otra emergencia'
     };
 

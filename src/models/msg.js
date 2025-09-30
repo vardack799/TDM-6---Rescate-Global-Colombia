@@ -1,26 +1,24 @@
-const { KeyObject } = require("crypto");
 const fs = require("fs");
 const path = require("path");
-const { json } = require("stream/consumers");
 
 const MESSAGES_FILE = path.join(__dirname, "..", "data", "msgData.json");
 
 //retorna la data segun el lugar y emergencia del usuario actual
-function getMessages(location, typeEmergency) {
+function getMessages() {
     let messages = JSON.parse(fs.readFileSync(MESSAGES_FILE, "utf8"))
-    let msgsReturn = []
+    // let msgsReturn = []
 
-    messages.forEach(u => {
-        if (u.location === location && u.typeEmergency === typeEmergency) {
-            msgsReturn.push(u)
-        }
-    });
-    return msgsReturn
+    // messages.forEach(u => {
+    //     if (u.location === location && u.typeEmergency === typeEmergency) {
+    //         msgsReturn.push(u)
+    //     }
+    // });
+    return messages
 }
 
 function saveMessages(msg) {
     let msgs = []
-    
+     
     if (fs.existsSync(MESSAGES_FILE)) {
         const data = fs.readFileSync(MESSAGES_FILE, "utf8")
         msgs = JSON.parse(data)
