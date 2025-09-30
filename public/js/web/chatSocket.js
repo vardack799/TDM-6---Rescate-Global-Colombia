@@ -33,7 +33,8 @@ export function connect(user) {
                 addSystemMessage(data.text);
                 break;
             case "msgD":
-                 loadMessages(JSON.stringify(data.msgsD), user.name)
+                loadMessages(user.name, JSON.stringify(data.emergency), JSON.stringify(data.location))
+                console.log("usuarios" + JSON.stringify(data.user))
                  break;
             default:
                 throw new Error("Tipo de mensaje desconocido: " + data.type);

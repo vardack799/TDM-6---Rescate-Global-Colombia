@@ -6,13 +6,6 @@ const MESSAGES_FILE = path.join(__dirname, "..", "data", "msgData.json");
 //retorna la data segun el lugar y emergencia del usuario actual
 function getMessages() {
     let messages = JSON.parse(fs.readFileSync(MESSAGES_FILE, "utf8"))
-    // let msgsReturn = []
-
-    // messages.forEach(u => {
-    //     if (u.location === location && u.typeEmergency === typeEmergency) {
-    //         msgsReturn.push(u)
-    //     }
-    // });
     return messages
 }
 

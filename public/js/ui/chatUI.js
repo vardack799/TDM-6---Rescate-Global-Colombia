@@ -1,10 +1,11 @@
 const messagesDiv = document.getElementById("messages"); 
-import { getMessages } from "../services/api.js"; //importa el método getMesagges() desde api.js para traer los mensajes guardados desde el backend
+import { getMessages } from "../services/api.js";
 
 const messages = await getMessages()
 console.log(JSON.stringify(messages, null, 2) + "Mensajes de backend a front por API")
 
-// const userList = document.getElementById("userList"); 
+// Set para rastrear IDs de mensajes ya cargados
+const loadedMessageIds = new Set()
 
 //Extrae la data del usuario del localStorage
 const dataStorage = localStorage.getItem("emergencyData")
@@ -26,7 +27,6 @@ fixChatHeight();
 export function addMessage(user, text, time, isSelf = false) {
     const msgEl = document.createElement("div");
     msgEl.classList.add("message");
-    msgEl
     if (isSelf) msgEl.classList.add("self");
     msgEl.innerHTML = `<strong>${user}: </strong><br>${text}
     <br> <small>${time}</small>`;
@@ -34,22 +34,36 @@ export function addMessage(user, text, time, isSelf = false) {
     messagesDiv.scrollIntoView({behavior: "smooth", block: "end"})
 }
 
-export function loadMessages(data, userName){
-    const dataOb = JSON.parse(data)
-    console.log(dataOb)
+export function loadMessages(name, emergency, location){
+    let msgArray = []
 
-    dataOb.forEach(i => {
+    messages.forEach(m => {
+        if (JSON.stringify(m.location) === location && JSON.stringify(m.typeEmergency) === emergency) {
+            msgArray.push(m)
+        }
+    });
 
-        const msgEl = document.createElement("div");
-        msgEl.classList.add("message");
-        msgEl
-        if (userName === i.user) msgEl.classList.add("self");
-        msgEl.innerHTML = `<strong>${i.user}: </strong><br>${i.text}
-        <br> <small>${i.time}</small>`;
-        messagesDiv.appendChild(msgEl);
-        messagesDiv.scrollIntoView({behavior: "smooth", block: "end"})
-
-    })
+    if (msgArray.length != 0) {
+        msgArray.forEach(mA => {
+            // Crear un identificador único para el mensaje
+            const messageId = `${mA.user}-${mA.time}-${mA.text}`
+            
+            // Solo cargar si no ha sido cargado antes
+            if (!loadedMessageIds.has(messageId)) {
+                const msgEl = document.createElement("div");
+                msgEl.classList.add("message");
+                
+                if (name === mA.user) msgEl.classList.add("self");
+                msgEl.innerHTML = `<strong>${mA.user}: </strong><br>${mA.text}
+                <br> <small>${mA.time}</small>`;
+                messagesDiv.appendChild(msgEl);
+                messagesDiv.scrollIntoView({behavior: "smooth", block: "end"});
+                
+                // Marcar como cargado
+                loadedMessageIds.add(messageId);
+            }
+        });
+    }
 }
 
 export function addSystemMessage(text) {

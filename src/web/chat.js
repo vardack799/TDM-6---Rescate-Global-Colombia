@@ -20,19 +20,15 @@ function setupChat(wss) {
 
                 broadcast(users, { type: "system", typeEmergency: data.user.emergency, location: data.user.location, text: `¡Bienvenido ${currentUser.name}! :D` });
                 
-                const allmsgs = getMessages()
-                
-                console.log(allmsgs)
-                // broadcast(users, {
-                //     type: "msgD", 
-                //     msgsD: allmsgs.map(m => ({
-                //         "user": m.user,
-                //         "location": m.location,
-                //         "typeEmergency": m.typeEmergency,
-                //         "time": m.time,
-                //         "text": m.text
-                //     }))
-                // })
+                // const allmsgs = getMessages()
+
+                //Broadcats para enviar datos y filtrar mensajes mostrados
+                broadcast(users, {
+                    type: "msgD", 
+                    user: data.user.name,
+                    emergency: data.user.emergency,
+                    location: data.user.location
+                })
 
                 // const allUsers = getUsers();
                 // broadcast(users, {
