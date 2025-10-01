@@ -10,7 +10,8 @@
 .chat-main {
     flex: 1;
     margin-top: 60px;
-    margin-bottom: 12vh;
+    margin-bottom: 7vh;
+    margin-left: 3.2%;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     padding: var(--spacing-lg);
@@ -84,7 +85,7 @@
     position: fixed;
     justify-content: center;
     align-items: center;
-    bottom: 48px;
+    bottom: 0;
     width: 100%;
     padding: var(--spacing-md);
     background: transparent;
@@ -127,6 +128,18 @@
 .send-btn:hover {
     color: var(--color-hover-btn);
     scale: 1.2;
+}
+
+
+@media (max-width: 1000px) {
+    .chat-input {
+        bottom: 48px;
+    }
+
+    .chat-main {
+        margin-bottom: 15vh;
+        margin-left: 0;
+    }
 }
 
 @media (max-width: 768px) {

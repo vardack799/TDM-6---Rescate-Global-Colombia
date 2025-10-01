@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "user": "Jose",
+    "location": "El Centro, Tunja, Boyacá",
+    "typeEmergency": "Inundacion",
+    "time": "02:05",
+    "text": "Aaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+    "user": "Jose",
+    "location": "El Centro, Tunja, Boyacá",
+    "typeEmergency": "Inundacion",
+    "time": "02:05",
+    "text": "Ok"
+  },
+  {
+    "user": "Luis",
+    "location": "El Centro, Tunja, Boyacá",
+    "typeEmergency": "Inundacion",
+    "time": "02:05",
+    "text": "Hola!"
+  }
+]
