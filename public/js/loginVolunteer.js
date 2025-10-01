@@ -1,16 +1,24 @@
-// js/loginVolunteer.js
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("userForm");
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
+        //Sanitización de datos
         const nombre = document.getElementById("nombre").value.trim();
         const contraseña = document.getElementById("contraseña").value.trim();
 
-        if (!nombre || !contraseña) {
-            alert("Debe ingresar nombre y contraseña");
-            return;
+        const validName = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+
+        if (!nombre && !contraseña) {
+            alert("Por favor digite los campos vacíos");
+            return
+        } else  if (!nombre || !validName.test(nombre)) {
+            alert("Ingrese un nombre valido...");
+            return
+        }else if (!contraseña) {
+            alert("Ingrese una contraseña...");
+            return
         }
 
         try {
@@ -26,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // Guardamos la sesión y marcamos logueo
+            //Se Guarda la sesión y se guarda el logueo
             localStorage.setItem("emergencyData", JSON.stringify({
                 id: user.id,
                 name: user.name,

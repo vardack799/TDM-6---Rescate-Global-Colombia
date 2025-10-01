@@ -105,6 +105,22 @@ header-component h1:hover {
     cursor: pointer;
 }
 
+#logOut i {
+    color: var(--color-orange);
+    position: absolute;
+    padding-right: var(--spacing-xl);
+    padding-bottom: 14px;
+    right: 15px;
+    scale: 1.8;
+    transition: 0.3s ease;
+}
+
+#logOut i:hover {
+    color: var(--color-white);
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
 @media (max-width: 722px) {
     header-component header h1 {
         font-size: var(--font-size-md);
