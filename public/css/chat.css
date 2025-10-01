@@ -130,6 +130,11 @@
     scale: 1.2;
 }
 
+.message.logged-self {
+    border: 2px solid var(--color-red);
+    box-shadow: 0 15px 30px var(--color-red);
+}
+
 
 @media (max-width: 1000px) {
     .chat-input {

@@ -4,7 +4,7 @@ import { getMessages } from "../services/api.js";
 const messages = await getMessages()
 console.log(JSON.stringify(messages, null, 2) + "Mensajes de backend a front por API")
 
-// Set para rastrear IDs de mensajes ya cargados
+//Set para rastrear IDs de mensajes ya cargados
 const loadedMessageIds = new Set();
 
 //Extrae la data del usuario del localStorage
@@ -27,15 +27,29 @@ fixChatHeight();
 export function addMessage(user, text, time, isSelf = false) {
     const msgEl = document.createElement("div");
     msgEl.classList.add("message");
-    if (isSelf) msgEl.classList.add("self");
+
+    if (isSelf) {
+        msgEl.classList.add("self");
+
+        //Extrae datos del usuario logueado
+        const userData = JSON.parse(localStorage.getItem("emergencyData") || "{}");
+        if (userData.loggedIn && user.includes(userData.name)) {
+            msgEl.classList.add("logged-self"); //Borde rojo
+        }
+    }
+
     msgEl.innerHTML = `<strong>${user}: </strong><br>${text}
     <br> <small>${time}</small>`;
     messagesDiv.appendChild(msgEl);
     messagesDiv.scrollIntoView({behavior: "smooth", block: "end"})
 }
 
+
 export function loadMessages(name, emergency, location){
     let msgArray = []
+
+    // Extrae la data del usuario del localStorage
+    const userData = JSON.parse(localStorage.getItem("emergencyData") || "{}");
 
     messages.forEach((m, index) => {
         if (JSON.stringify(m.location) === location && JSON.stringify(m.typeEmergency) === emergency) {
@@ -54,7 +68,16 @@ export function loadMessages(name, emergency, location){
                 const msgEl = document.createElement("div");
                 msgEl.classList.add("message"); 
                 
-                if (name === mA.user) msgEl.classList.add("self");
+                if (name === mA.user || mA.user === `${name} Voluntario`) {
+                    // Si el mensaje pertenece al usuario actual, se marca como "self"
+                    msgEl.classList.add("self");
+
+                    // Si además el usuario está logueado como voluntario, se marca con borde rojo
+                    if (userData.loggedIn) {
+                        msgEl.classList.add("logged-self");
+                    }
+                }
+
                 msgEl.innerHTML = `<strong>${mA.user}: </strong><br>${mA.text}
                 <br> <small>${mA.time}</small>`;
                 messagesDiv.appendChild(msgEl);
@@ -67,6 +90,8 @@ export function loadMessages(name, emergency, location){
     }
 }
 
+
+
 export function addSystemMessage(text) {
     const msgEl = document.createElement("div");
     msgEl.classList.add("message", "system");
@@ -74,40 +99,3 @@ export function addSystemMessage(text) {
     messagesDiv.appendChild(msgEl);
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
-
-// export function updateUserList(users) {
-//     userList.innerHTML = "";
-//     users.forEach(u => {
-//         const li = document.createElement("li");
-//         li.classList.add("user-item");
-
-//         li.innerHTML = `
-//             <div class="user-avatar">
-//                 <img src="${u.img}" alt="${u.name}" class="avatar-img">
-//                 <span class="status ${u.connected ? "online" : "offline"}"></span>
-//             </div>
-//             <div class="user-info">
-//                 <span class="user-name">${u.name}</span>
-//                 <small class="user-role">${u.rol}</small>
-//             </div>
-//         `;
-
-//         userList.appendChild(li);
-//     });
-// }
-
-// export function showUserList(list, show) {
-//     if (show) {
-//         list.classList.add("active");
-//     } else {
-//         list.classList.remove("active");
-//     }
-// }
-
-// export function clearUser() {
-//     localStorage.removeItem("username");
-// }
-
-// export function redirectToLogin() {
-//     window.location.href = "/login.html";
-// }

@@ -27,10 +27,18 @@ chatForm.addEventListener("submit", function(e) {
     e.preventDefault();
     const text = messageInput.value.trim();
     if (text) {
-        sendMessage(user.name, user.location, user.emergency, text);
+        
+        //Si esta logueado le agraga "Voluntario" al nombre
+        let displayName = user.name;
+        if (user.loggedIn) {
+            displayName = `${user.name} Voluntario`;
+        }
+
+        sendMessage(displayName, user.location, user.emergency, text);
         messageInput.value = "";
     }
 });
+
 
 // logoutBtn.addEventListener("click", function() {
 //     clearUser();
