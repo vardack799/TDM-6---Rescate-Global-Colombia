@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const form = document.getElementById("selectChannel");
 
+  // Extraemos la info de localStorage
+  const userData = JSON.parse(localStorage.getItem("emergencyData") || "{}");
+  const isLoggedIn = userData.loggedIn === true;
+
   try {
     // Trae mensajes desde la API
     const res = await fetch("/api/messages");
@@ -24,7 +28,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       //Acción al hacer click en la emergencia
       button.addEventListener("click", () => {
-        openModal(em, messages.filter(m => `${m.typeEmergency} - ${m.location}` === em));
+        if (isLoggedIn) {
+          //Si está logueado: redirige al chat
+          localStorage.setItem("emergencyData", JSON.stringify({
+            ...userData,
+            emergency: em.split(" - ")[0],
+            location: em.split(" - ")[1]
+          }));
+          window.location.href = "chat.html";
+        } else {
+          //Si no está logueado: abre el modal como antes
+          openModal(em, messages.filter(m => `${m.typeEmergency} - ${m.location}` === em));
+        }
       });
 
       form.appendChild(button);
