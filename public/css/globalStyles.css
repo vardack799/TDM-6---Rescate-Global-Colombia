@@ -89,20 +89,30 @@ header-component header h1 {
     font-weight: bold;
 }
 
-#volunteer i{
-    scale: 2;
+#volunteer {
+    margin-left: var(--spacing-sm);
+    scale: 1.3;
     color: var(--color-orange);
     transition: 0.3s ease;
 }
 
-#volunteer i:hover{
+#volunteer:hover{
     cursor: pointer;
     color: var(--color-white);
-    transform: scale(1.2);
+    transform: scale(1.1);
+}
+
+#volunteer span {
+    margin-left: var(--spacing-xs);
+    font-size: var(--font-size-sm);
 }
 
 header-component h1:hover {
     cursor: pointer;
+}
+
+#logOut {
+    display: none;
 }
 
 #logOut i {
@@ -125,4 +135,9 @@ header-component h1:hover {
     header-component header h1 {
         font-size: var(--font-size-md);
     }
+
+    #volunteer span{
+        display: none;
+    }
+
 }

@@ -9,7 +9,24 @@ class MenuComponent extends HTMLElement {
 
         
         this.querySelector(".home").addEventListener("click",() => {
-             window.location.href = "main.html"
+            //Verifica si el voluntario está logueado
+            const emergencyData = localStorage.getItem("emergencyData");
+            
+            if (emergencyData) {
+                try {
+                    const data = JSON.parse(emergencyData);
+                    if (data.loggedIn) {
+                        //Si está logueado va a warningsChannel.html
+                        window.location.href = "warningsChannel.html";
+                        return;
+                    }
+                } catch (error) {
+                    console.error("Error al parsear emergencyData:", error);
+                }
+            }
+            
+            //Si no está logueado va a main.html
+            window.location.href = "main.html";
         })
         
         this.querySelector(".warning").addEventListener("click",() => {
