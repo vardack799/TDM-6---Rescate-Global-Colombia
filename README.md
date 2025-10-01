@@ -8,3 +8,13 @@ Para el desarrollo de dicho software se llevan los siguientes pasos:
 4. Implementación de la lógica o desarrollo
 5. Testeo
 6. Y por último evaluación del cliente.
+
+Datos para probar login de voluntarios:
+
+Voluntario 1:
+"name": "Alejandro",
+"password": "1234"
+
+Voluntario 2:
+"name": "David",
+"password": "abcd"
