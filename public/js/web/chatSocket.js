@@ -7,13 +7,6 @@ export function connect(user) {
 
     socket = new WebSocket(wsUrl);
 
-    // socket.addEventListener("open", () => {
-    //     socket.send(JSON.stringify({
-    //         type: "login",
-    //         user
-    //     }));
-    // });
-
     socket.addEventListener("open", () => { 
     socket.send(JSON.stringify({
             type: "formUser",
