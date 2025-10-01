@@ -5,17 +5,17 @@
     width: 100%;
     background-color: var(--color-white);
 }
-
+ 
 /* Main chat (mensajes) */
 .chat-main {
     flex: 1;
     margin-top: 60px;
+    margin-bottom: 6.5vh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     padding: var(--spacing-lg);
     background: var(--color-background);
     box-sizing: border-box;
-    height: 90vh;
 }
 
 .chat-main #chatBox-title {
@@ -38,6 +38,14 @@
     border-radius: var(--radius-md);
 }
 
+.message small {
+    font-size: var(--font-size-xxs);
+}
+
+.message strong {
+    font-size: var(--font-size-sm);
+}
+
 .message:not(.self):not(.system) {
     align-self: flex-start;
     background: var(--color-white);
@@ -45,6 +53,12 @@
     color: var(--color-black);
     border-bottom-left-radius: 0;
     box-shadow: 0 15px 30px var(--color-dark-blue);
+}
+
+.message:not(.self):not(.system) small {
+    display: flex;
+    margin-top: 6px;
+    justify-content: end;
 }
 
 .message.self {

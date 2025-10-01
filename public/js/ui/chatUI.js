@@ -52,7 +52,7 @@ export function loadMessages(name, emergency, location){
             // Solo cargar si no ha sido cargado antes
             if (!loadedMessageIds.has(messageId)) {
                 const msgEl = document.createElement("div");
-                msgEl.classList.add("message");
+                msgEl.classList.add("message"); 
                 
                 if (name === mA.user) msgEl.classList.add("self");
                 msgEl.innerHTML = `<strong>${mA.user}: </strong><br>${mA.text}

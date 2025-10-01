@@ -24,7 +24,7 @@ function setupChat(wss) {
 
                 //Broadcats para enviar datos y filtrar mensajes mostrados
                 broadcast(users, {
-                    type: "msgD", 
+                    type: "msgD",  
                     user: data.user.name,
                     emergency: data.user.emergency,
                     location: data.user.location
@@ -72,9 +72,9 @@ function setupChat(wss) {
         ws.on("close", () => {
             if (currentUser) {
                 console.log(`${new Date().toISOString()} - 🔴 Usuario desconectado (${currentUser.name} | ${ip}, lugar: ${currentUser.location})`);
+                
+                broadcast(users, { type: "system", text: `${currentUser.name} salió`, typeEmergency: currentUser.typeEmergency, location: currentUser.location});
                 users = users.filter(u => u !== currentUser);
-
-                broadcast(users, { type: "system", text: `${currentUser.name} salió` });
 
                 // const allUsers = getUsers();
                 // broadcast(users, {
