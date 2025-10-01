@@ -104,6 +104,8 @@ body {
     margin: 8px 0;
     border-radius: var(--radius-xlg);
     border-top-left-radius: 0;
+    max-width: 90%;
+    word-wrap: break-word;
 }
 .message-card p {
     margin: 2px 0;
