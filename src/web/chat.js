@@ -16,7 +16,7 @@ function setupChat(wss) {
                 currentUser = { id: data.user.id, name: data.user.name, location: data.user.location, typeEmergency: data.user.emergency, ws};
                 users.push(currentUser);
 
-                console.log(`${new Date().toISOString()} - 🟢 Usuario conectado (${currentUser.name} | IP: ${ip} lugar: ${currentUser.location})`);
+                console.log(`${new Date().toISOString()} - 🟢 Usuario conectado (${currentUser.name} | IP: ${ip} | Lugar: ${currentUser.location} | Emergencia: ${currentUser.typeEmergency})`);
 
                 broadcast(users, { type: "system", typeEmergency: data.user.emergency, location: data.user.location, text: `¡Bienvenido ${currentUser.name}! :D` });
                 

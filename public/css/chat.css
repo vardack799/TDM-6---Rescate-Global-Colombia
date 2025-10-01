@@ -15,6 +15,7 @@
     padding: var(--spacing-lg);
     background: var(--color-background);
     box-sizing: border-box;
+    height: 90vh;
 }
 
 .chat-main #chatBox-title {

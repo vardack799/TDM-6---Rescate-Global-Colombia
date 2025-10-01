@@ -5,7 +5,7 @@ const messages = await getMessages()
 console.log(JSON.stringify(messages, null, 2) + "Mensajes de backend a front por API")
 
 // Set para rastrear IDs de mensajes ya cargados
-const loadedMessageIds = new Set()
+const loadedMessageIds = new Set();
 
 //Extrae la data del usuario del localStorage
 const dataStorage = localStorage.getItem("emergencyData")
@@ -37,16 +37,17 @@ export function addMessage(user, text, time, isSelf = false) {
 export function loadMessages(name, emergency, location){
     let msgArray = []
 
-    messages.forEach(m => {
+    messages.forEach((m, index) => {
         if (JSON.stringify(m.location) === location && JSON.stringify(m.typeEmergency) === emergency) {
-            msgArray.push(m)
+            // Agregar el índice original del array como identificador único
+            msgArray.push({...m, originalIndex: index})
         }
     });
 
     if (msgArray.length != 0) {
         msgArray.forEach(mA => {
-            // Crear un identificador único para el mensaje
-            const messageId = `${mA.user}-${mA.time}-${mA.text}`
+            // Se usa el índice original del array de messages como ID único
+            const messageId = mA.originalIndex;
             
             // Solo cargar si no ha sido cargado antes
             if (!loadedMessageIds.has(messageId)) {
