@@ -4,29 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WarningsChannel</title>
+
+    <link rel="stylesheet" href="./css/globalStyles.css" />
+    <link rel="stylesheet" href="./css/menu.css" />
     <link rel="stylesheet" href="./css/warningsChannel.css" />
-    <link rel="stylesheet" href="./css/header.css" />
-    <link rel="stylesheet" href="./css/footer.css" />
+    <script src="https://kit.fontawesome.com/55ed1da071.js" crossorigin="anonymous"></script>
+
+    <script src="./components/header.js"></script>
+    <script src="./components/menu.js"></script>
 </head>
 <body>
-    <header>
-    <!-- header global -->
-    <div id="global-header">
-        <script>
-            fetch('./header.html')
-                .then(res => res.text())
-                .then(html => {
-                    document.getElementById('global-header').innerHTML = html;
-                });
-        </script>
-    </div>
-    </header>
 
-    <h1>...</h1>
-    <div id="container-channels">
+    <header-component></header-component>
+
+    <div class="container">
+        <h2>Alertas actuales</h2>
+
+        <div id="alertbox">
+
+        </div>
 
     </div>
 
-    <!-- menú global -->
+    <!-- Menú -->
+    <menu-component></menu-component>
+
+    <script src="js/warningsChannel.js"></script>
+
 </body>
 </html>

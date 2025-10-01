@@ -84,6 +84,13 @@ header-component header h1 {
 #volunteer i{
     scale: 2;
     color: var(--color-orange);
+    transition: 0.3s ease;
+}
+
+#volunteer i:hover{
+    cursor: pointer;
+    color: var(--color-white);
+    transform: scale(1.2);
 }
 
 header-component h1:hover {

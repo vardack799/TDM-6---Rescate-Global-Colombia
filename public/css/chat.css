@@ -10,7 +10,7 @@
 .chat-main {
     flex: 1;
     margin-top: 60px;
-    margin-bottom: 6.5vh;
+    margin-bottom: 12vh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     padding: var(--spacing-lg);
@@ -84,7 +84,7 @@
     position: fixed;
     justify-content: center;
     align-items: center;
-    bottom: 0;
+    bottom: 48px;
     width: 100%;
     padding: var(--spacing-md);
     background: transparent;

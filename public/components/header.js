@@ -9,7 +9,10 @@ class HeaderComponent extends HTMLElement {
 
         this.querySelector("#headerTitle").addEventListener("click",() => {
              window.location.href = "main.html"
-        })
+        }) 
+        this.querySelector("#volunteer").addEventListener("click",() => {
+             window.location.href = "loginVolunteer.html"
+        }) 
     }
 }
 
