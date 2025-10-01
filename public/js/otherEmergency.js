@@ -61,21 +61,59 @@ const dataSuggest = {
 const searchCont = document.querySelector(".input-box");
 const searchI = document.getElementById("searchI");
 const suggestions = document.getElementById("suggestions");
+const btnContinue = document.getElementById("btnContinue");
+
+// Función para validar si la emergencia existe en dataSuggest
+function isValidEmergency(value) {
+  const emergencyValues = Object.values(dataSuggest);
+  return emergencyValues.includes(value);
+}
+
+// Evento del botón "Continuar" con validación
+btnContinue.addEventListener("click", (e) => {
+  e.preventDefault()
+  
+  const emergencyValue = searchI.value.trim()
+  
+  // Validar que no esté vacío
+  if (emergencyValue === "") {
+    alert("Por favor, ingrese un tipo de emergencia...")
+    searchI.focus()
+    return
+  }
+  
+  // Validar que sea una emergencia válida de la lista
+  if (!isValidEmergency(emergencyValue)) {
+    alert("Por favor, seleccione una emergencia válida de la lista de sugerencias...")
+    searchI.focus()
+    return
+  }
+  
+  // Si pasa las validaciones, redirigir
+  window.location.href = `name.html?emergency=${encodeURIComponent(emergencyValue)}`})
+
+// También validar al presionar Enter
+searchI.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    btnContinue.click(); // Simular click en el botón para usar la misma validación
+  }
+})
 
 searchI.addEventListener("keyup", (e) => {
   let dataS = e.target.value;
   let emptyA = [];
   
   if (dataS) {
-    // Convertir el objeto a array de valores
+    // Convierte el objeto a array de valores
     const emergencyValues = Object.values(dataSuggest);
     
-    // Filtrar las emergencias que coincidan
+    // Filtra las emergencias que coincidan
     emptyA = emergencyValues.filter((emergency) => {
       return emergency.toLowerCase().startsWith(dataS.toLowerCase());
     });
 
-    // Mapear a elementos li
+    // Mapea a los elementos li
     emptyA = emptyA.map((data) => {
       return `<li>${data}</li>`;
     });
@@ -83,7 +121,7 @@ searchI.addEventListener("keyup", (e) => {
     searchCont.classList.add("active");
     showSuggestions(emptyA);
     
-    // Agregar evento click a cada sugerencia
+    // Agrega evento click a cada sugerencia
     let allList = suggestions.querySelectorAll("li");
     for (let index = 0; index < allList.length; index++) {
       allList[index].setAttribute("onclick", "select(this)");
@@ -93,12 +131,14 @@ searchI.addEventListener("keyup", (e) => {
   }
 });
 
+// Función para seleccionar sugerencia
 function select(item) {
   let selectD = item.textContent;
   searchI.value = selectD;
   searchCont.classList.remove("active");
 }
 
+// Muestra las sugerencias
 function showSuggestions(list) {
   let listD;
   if (!list.length) {
