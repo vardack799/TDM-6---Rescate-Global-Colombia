@@ -79,6 +79,7 @@ body {
     padding: 12px 16px;
     border-bottom: 1px solid var(--color-white);
     color: var(--color-white);
+    background: var(--color-grey);
 }
 
 .modal-header .modal-close {
@@ -109,6 +110,11 @@ body {
 }
 .message-card p {
     margin: 2px 0;
+}
+
+.noItemsMessage {
+    font-size: var(--font-size-xxxl);
+    font-weight: 500;
 }
 
 @keyframes fadeIn {

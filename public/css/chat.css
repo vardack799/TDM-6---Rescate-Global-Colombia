@@ -124,7 +124,7 @@
 .chat-input .send-btn svg  {
     scale: 2.8;
 }
-
+ 
 .send-btn:hover {
     color: var(--color-hover-btn);
     scale: 1.2;

@@ -20,30 +20,37 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     //Crea botones de las emergencias
-    emergencies.forEach(em => {
-      const button = document.createElement("button");
-      button.type = "button"; 
-      button.classList.add("emergency-btn"); 
-      button.textContent = em;
+    if (emergencies.length != 0) {
+      emergencies.forEach(em => {
+        const button = document.createElement("button");
+        button.type = "button"; 
+        button.classList.add("emergency-btn"); 
+        button.textContent = em;
 
-      //Acción al hacer click en la emergencia
-      button.addEventListener("click", () => {
-        if (isLoggedIn) {
-          //Si está logueado: redirige al chat
-          localStorage.setItem("emergencyData", JSON.stringify({
-            ...userData,
-            emergency: em.split(" - ")[0],
-            location: em.split(" - ")[1]
-          }));
-          window.location.href = "chat.html";
-        } else {
-          //Si no está logueado: abre el modal como antes
-          openModal(em, messages.filter(m => `${m.typeEmergency} - ${m.location}` === em));
-        }
+        //Acción al hacer click en la emergencia
+        button.addEventListener("click", () => {
+          if (isLoggedIn) {
+            //Si está logueado: redirige al chat
+            localStorage.setItem("emergencyData", JSON.stringify({
+              ...userData,
+              emergency: em.split(" - ")[0],
+              location: em.split(" - ")[1]
+            }));
+            window.location.href = "chat.html";
+          } else {
+            //Si no está logueado: abre el modal 
+            openModal(em, messages.filter(m => `${m.typeEmergency} - ${m.location}` === em));
+          }
+        });
+
+        form.appendChild(button);
       });
-
-      form.appendChild(button);
-    });
+    } else {
+      const message = document.createElement("div");
+        message.classList.add("noItemsMessage"); 
+        message.textContent = "¡No hay emergencias!";
+        form.appendChild(message);
+    }
 
     //Modal
     function openModal(emergencyTitle, filteredMessages) {

@@ -28,7 +28,7 @@ export function addMessage(user, text, time, isSelf = false) {
     const msgEl = document.createElement("div");
     msgEl.classList.add("message");
 
-    if (isSelf) {
+    if (isSelf) { 
         msgEl.classList.add("self");
 
         //Extrae datos del usuario logueado
