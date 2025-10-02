@@ -63,40 +63,40 @@ const searchI = document.getElementById("searchI");
 const suggestions = document.getElementById("suggestions");
 const btnContinue = document.getElementById("btnContinue");
 
-// Función para validar si la emergencia existe en dataSuggest
+//Función para validar si la emergencia existe en dataSuggest
 function isValidEmergency(value) {
   const emergencyValues = Object.values(dataSuggest);
   return emergencyValues.includes(value);
 }
 
-// Evento del botón "Continuar" con validación
+//Evento del botón "Continuar" con validación
 btnContinue.addEventListener("click", (e) => {
   e.preventDefault()
   
   const emergencyValue = searchI.value.trim()
   
-  // Validar que no esté vacío
+  //Valida que no esté vacío
   if (emergencyValue === "") {
     alert("Por favor, ingrese un tipo de emergencia...")
     searchI.focus()
     return
   }
   
-  // Validar que sea una emergencia válida de la lista
+  //Valida que sea una emergencia válida de la lista
   if (!isValidEmergency(emergencyValue)) {
     alert("Por favor, seleccione una emergencia válida de la lista de sugerencias...")
     searchI.focus()
     return
   }
   
-  // Si pasa las validaciones, redirigir
+  //Si pasa las validaciones redirige
   window.location.href = `name.html?emergency=${encodeURIComponent(emergencyValue)}`})
 
-// También validar al presionar Enter
+//Validar al presionar Enter
 searchI.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
-    btnContinue.click(); // Simular click en el botón para usar la misma validación
+    btnContinue.click(); 
   }
 })
 
